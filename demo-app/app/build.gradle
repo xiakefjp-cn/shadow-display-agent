@@ -1,0 +1,36 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.shadowtasks'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.shadowtasks'
+        minSdk 29
+        targetSdk 35
+        versionCode 1
+        versionName '0.1.0'
+        buildConfigField 'String', 'DEFAULT_API_URL', '"http://127.0.0.1:8787"'
+        buildConfigField 'String', 'DEMO_API_TOKEN', '"demo-local-token"'
+    }
+
+    flavorDimensions += 'role'
+    productFlavors {
+        user {
+            dimension 'role'
+            applicationIdSuffix '.user'
+            manifestPlaceholders = [appLabel: 'Shadow Tasks']
+        }
+        agent {
+            dimension 'role'
+            applicationIdSuffix '.agent'
+            manifestPlaceholders = [appLabel: 'Shadow Tasks Agent']
+        }
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+}

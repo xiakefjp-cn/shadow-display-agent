@@ -1,0 +1,9 @@
+{
+  "instruction": "在 Shadow Tasks 中创建任务，标题为 Project review materials。看到任务出现在列表后结束。",
+  "startApp": "Shadow Tasks",
+  "risk": "low",
+  "verification": {
+    "type": "demo-task",
+    "titleContains": "Project review materials"
+  }
+}

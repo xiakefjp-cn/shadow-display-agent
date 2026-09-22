@@ -1,0 +1,17 @@
+{
+  "name": "shadow-display-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A display-isolated Android phone agent proof of concept.",
+  "scripts": {
+    "doctor": "node src/cli.mjs doctor",
+    "observe": "node src/cli.mjs observe",
+    "run": "node src/cli.mjs run",
+    "demo-server": "node demo-server/server.mjs",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

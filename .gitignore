@@ -1,0 +1,9 @@
+.env
+.shadow-agent/
+artifacts/
+tools/
+*.log
+demo-app/.gradle/
+demo-app/build/
+demo-app/app/build/
+

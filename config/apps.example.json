@@ -1,0 +1,9 @@
+{
+  "Shadow Tasks": {
+    "package": "com.shadowtasks.agent",
+    "component": "com.shadowtasks.agent/com.shadowtasks.MainActivity"
+  },
+  "Calendar": {
+    "package": "com.google.android.calendar"
+  }
+}

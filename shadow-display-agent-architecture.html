@@ -4959,7 +4959,7 @@
       </div>
     </div>
 
-    <script id="archify-guided-views-data" type="application/json">[{"id":"main-path","label":"任务执行主链路","focus":["task_input","agent_runner","safety_policy","adb_executor","virtual_display","agent_app","demo_backend","verifier","verified_result"],"note":"从显式任务输入开始，经过安全约束的虚拟显示操作，最终由独立后端验证。"},{"id":"decision-loop","label":"模型决策与反馈","focus":["context_observer","agent_runner","model_client","model_service","virtual_display"],"note":"模型根据虚拟显示截图和最近操作历史逐步选择下一动作。"},{"id":"truth-boundary","label":"安全与真实结果边界","focus":["safety_policy","adb_executor","demo_backend","verifier","verified_result"],"note":"Display 0 写入被禁止；模型声明完成后仍必须经过业务接口验证。"}]</script>
+    <script id="archify-guided-views-data" type="application/json">[{"id":"main-path","label":"任务执行主链路","focus":["task_input","task_preprocessor","agent_runner","safety_policy","adb_executor","virtual_display","agent_app","demo_backend","verifier","verified_result"],"note":"从显式任务输入开始，经过加载与预处理、安全约束的虚拟显示操作，最终由独立后端验证。"},{"id":"decision-loop","label":"模型决策与反馈","focus":["context_observer","agent_runner","model_client","model_service","virtual_display"],"note":"模型根据虚拟显示截图和最近操作历史逐步选择下一动作。"},{"id":"truth-boundary","label":"安全与真实结果边界","focus":["safety_policy","adb_executor","demo_backend","verifier","verified_result"],"note":"Display 0 写入被禁止；模型声明完成后仍必须经过业务接口验证。"}]</script>
 
     <script id="archify-i18n-data" type="application/json">{"locale":"zh-CN","messages":{"viewer.kind.frontend":"前端","viewer.kind.backend":"后端","viewer.kind.database":"数据库","viewer.kind.cloud":"云服务","viewer.kind.security":"安全","viewer.kind.messagebus":"消息总线","viewer.kind.external":"外部系统","viewer.kind.neutral":"中性","viewer.kind.node":"节点","viewer.kind.start":"开始","viewer.kind.active":"活动","viewer.kind.waiting":"等待","viewer.kind.decision":"决策","viewer.kind.success":"成功","viewer.kind.failure":"失败","viewer.toolbar.actions":"图表操作","viewer.theme.toggle.title":"切换主题（T）","viewer.theme.toggle":"切换颜色主题","viewer.theme.dark":"深色","viewer.theme.light":"浅色","viewer.preset.choose.title":"选择视觉风格（S 循环切换）","viewer.preset.choose":"选择视觉风格","viewer.preset.style":"风格","viewer.preset.menu":"视觉风格","viewer.preset.identity":"视觉表达","viewer.preset.cycles":"S 循环切换","viewer.preset.classic":"经典","viewer.preset.classic.short":"经典","viewer.preset.classic.hint":"稳定的技术默认风格","viewer.preset.flow":"信号流","viewer.preset.flow.short":"流动","viewer.preset.flow.hint":"突出动态流向","viewer.preset.blueprint":"蓝图","viewer.preset.blueprint.hint":"工程评审","viewer.preset.editorial":"编辑风格","viewer.preset.editorial.hint":"适合发布与上线说明","viewer.preset.badge.signalFlow":"信号流","viewer.preset.badge.blueprint":"蓝图 / 修订 01","viewer.preset.badge.editorial":"编辑风格 / 现场笔记","viewer.preset.badge.editorialPlate":"ARCHIFY / 图版 04","viewer.preset.current":"当前视觉风格：{style}。选择视觉风格","viewer.motion.live":"动态","viewer.motion.still":"静态","viewer.motion.pause":"暂停动效","viewer.motion.resume":"恢复动效","viewer.motion.reduced":"已根据减少动态效果偏好暂停动效","viewer.motion.hidden":"页面不可见时已暂停动效","viewer.motion.yielding":"暂停动效；当前让位于{owner}","viewer.motion.yielding.title":"动态预览已启用 · 正在让位于{owner}","viewer.owner.story":"引导故事","viewer.owner.chapter":"当前章节","viewer.owner.chapterPreview":"章节差异预览","viewer.owner.handoff":"章节交接","viewer.owner.route":"路径探测","viewer.owner.lens":"语义透镜","viewer.owner.relationship":"关系预览","viewer.owner.intent":"意图追踪","viewer.owner.focus":"语义聚焦","viewer.owner.legend":"图例预览","viewer.owner.reader":"读者交互","viewer.present.enter":"进入演示模式","viewer.present.enter.title":"演示模式（F）","viewer.present.exit":"退出演示模式","viewer.present.exit.title":"退出演示模式（F 或 Escape）","viewer.present.present":"演示","viewer.present.exit.label":"退出","viewer.export.button":"导出","viewer.export.button.title":"导出图表（E）","viewer.export.diagram":"导出图表","viewer.export.menu":"导出","viewer.export.subtitle":"便携、整洁的输出","viewer.export.share":"分享","viewer.export.shareCard":"分享卡片","viewer.export.routeShareCard":"路径分享卡片","viewer.export.reachShareCard":"可达范围分享卡片","viewer.export.copyShareCard":"复制分享卡片","viewer.export.copyDiagram":"复制图表","viewer.export.clipboardPng":"复制 PNG 到剪贴板","viewer.export.raster":"位图","viewer.export.image":"图像","viewer.export.lossless":"无损图像","viewer.export.compact":"紧凑图像","viewer.export.modern":"现代图像格式","viewer.export.vectorMotion":"矢量与动效","viewer.export.vectorMotion.heading":"矢量与动效","viewer.export.editable":"可编辑矢量图","viewer.export.motion6s":"6 秒动效","viewer.export.unsupported":"当前浏览器不支持","viewer.export.clipboardUnsupported":"当前浏览器不支持写入图片剪贴板","viewer.export.clipboardUnsupported.period":"当前浏览器不支持写入图片剪贴板。","viewer.export.clipboardUnsupported.short":"此浏览器不支持写入图片剪贴板。","viewer.export.motionUnavailable":"当前浏览器无法录制动效","viewer.export.webmUnavailable":"当前浏览器不支持 WebM","viewer.export.failed":"导出失败：{message}","viewer.export.unknownVariant":"未知的分享卡片类型：{variant}","viewer.export.routeRequired":"请先追踪路径，再导出路径分享卡片","viewer.export.reachRequired":"请先追踪编写可达范围，再导出可达范围分享卡片","viewer.export.unknown":"未知错误","viewer.export.routeFailed":"路径分享卡片导出失败：{message}","viewer.export.reachFailed":"可达范围分享卡片导出失败：{message}","viewer.export.copyFailed":"复制失败：{message}","viewer.export.copiedPng":"已将 PNG 复制到剪贴板","viewer.export.copiedShare":"已复制分享卡片","viewer.export.downloadedShare":"已下载分享卡片","viewer.export.downloadedRoute":"已下载路径分享卡片","viewer.export.downloadedReach":"已下载可达范围分享卡片","viewer.export.downloadedWebm":"已下载 WebM","viewer.export.recording":"正在录制 6 秒动效…","viewer.export.card.routeSummary.one":"路径：{source} → {target} · {count} 个有向跳转","viewer.export.card.routeSummary.other":"路径：{source} → {target} · {count} 个有向跳转","viewer.export.card.reachSummary":"从{origin}开始的编写{direction} · {nodes} · {links} · 最深 {hops}","viewer.export.card.node.one":"{count} 个节点","viewer.export.card.node.other":"{count} 个节点","viewer.export.card.link.one":"{count} 条连接","viewer.export.card.link.other":"{count} 条连接","viewer.export.card.hop.one":"{count} 跳","viewer.export.card.hop.other":"{count} 跳","viewer.export.card.routeBadge":"ARCHIFY · 路径 · {hops}","viewer.export.card.reachBadge":"ARCHIFY · {direction}可达范围","viewer.export.card.defaultBadge":"ARCHIFY · {preset} · {theme}","viewer.export.direction.upstream":"上游","viewer.export.direction.downstream":"下游","viewer.export.error.canvasUnavailable":"无法为{label}使用画布","viewer.export.error.contextUnavailable":"无法为{label}创建二维画布上下文","viewer.export.error.toBlobUnavailable":"{label}无法使用 canvas.toBlob","viewer.export.error.toBlobNull":"{label}的 canvas.toBlob 未返回数据","viewer.export.error.variantsCombined":"无法同时组合多种分享卡片类型","viewer.export.error.viewerState":"分享卡片导出无法移除临时 Viewer 状态","viewer.export.error.routeState":"路径卡片导出无法安全保留已解析路径","viewer.export.error.reachState":"可达范围卡片导出无法安全保留编写的可达范围","viewer.export.error.webmRequirements":"WebM 动效导出需要追踪动画及浏览器 MediaRecorder 支持","viewer.export.error.mediaRecorder":"MediaRecorder 录制失败","viewer.export.error.emptyWebm":"MediaRecorder 生成了空的 WebM","viewer.export.error.webmBackground":"无法为 WebM 导出加载 SVG 背景","viewer.guided.region":"图表引导视图","viewer.guided.previous":"上一个引导视图","viewer.guided.previous.title":"上一个引导视图（[）","viewer.guided.next":"下一个引导视图","viewer.guided.next.title":"下一个引导视图（]）","viewer.guided.views":"引导视图","viewer.guided.explore":"探索此系统","viewer.guided.intro":"沿精选路径逐步查看，而不改变源图表。","viewer.guided.trail":"故事轨迹","viewer.guided.beat":"节点","viewer.guided.nextBeat":"下一步","viewer.guided.play":"播放引导故事","viewer.guided.play.title":"播放引导故事（P）","viewer.guided.pause":"暂停引导故事","viewer.guided.pause.title":"暂停引导故事（P）","viewer.guided.replay":"重播引导故事","viewer.guided.replay.title":"重播引导故事（P）","viewer.guided.playStory":"播放故事","viewer.guided.pauseStory":"暂停","viewer.guided.replayStory":"重播故事","viewer.guided.motionUnavailable":"静态模式下无法播放故事","viewer.guided.enableMotion":"切换为动态模式以播放引导故事","viewer.guided.selectBeatLink":"选择故事节点以复制其精确链接","viewer.guided.copyMoment":"复制此刻","viewer.guided.momentCopied":"已复制时刻链接","viewer.guided.momentCopyFailed":"无法复制故事时刻链接","viewer.guided.copied":"已复制","viewer.guided.copyFailed":"复制失败","viewer.guided.showAll":"显示全部","viewer.guided.showAll.aria":"显示完整图表","viewer.guided.chapters":"故事章节","viewer.guided.storyTrail":"{label}的故事轨迹：{count} 个节点","viewer.guided.chapter.open":"打开第 {index}/{total} 章：{label}，{count} 个停靠点","viewer.guided.chapter.current":"当前第 {index}/{total} 章：{label}，{count} 个停靠点","viewer.guided.chapter.selectedNodes":"已选择 {count} 个节点","viewer.guided.chapter.stops":"{count} 个停靠点","viewer.guided.chapter.stop.one":"{count} 个停靠点","viewer.guided.chapter.stop.other":"{count} 个停靠点","viewer.guided.chapter.current.title":"{label} — 当前章节，{count} 个停靠点","viewer.guided.chapter.delta.expanded":"{stay} 个保留，{enter} 个进入，{leave} 个离开","viewer.guided.chapter.delta.aria":"打开第 {index}/{total} 章：{label}。章节聚焦差异：{delta}","viewer.guided.chapter.delta.title":"{label} — 章节聚焦 {delta}","viewer.guided.handoff":"{from} → {to} · 经由{label}","viewer.guided.share.chapter":"章节 {index} / {total}","viewer.guided.share.initial":"章节 01 / 01","viewer.guided.share.default":"引导章节","viewer.guided.state.ready":"就绪","viewer.guided.state.playing":"播放中","viewer.guided.state.settled":"已完成","viewer.guided.state.paused":"已暂停","viewer.guided.state.pinned":"已固定","viewer.guided.state.still":"静态","viewer.guided.share.step":"步骤 {index} / {total} · {label}","viewer.guided.share.staticMoment":"{step} · 静态时刻","viewer.guided.share.complete":"{count} 个步骤已完成 · {note}","viewer.guided.share.settled":"路径已稳定，可供阅读。","viewer.guided.share.staticPath":"{count} 个步骤 · 静态路径","viewer.guided.share.ready":"{count} 个步骤 · 就绪","viewer.guided.share.aria":"{state}，第 {index}/{total} 章：{label}。{beat}。{route}","viewer.guided.beat.start":"节点 {index} / {total} · {label} · 起点","viewer.guided.beat.forward":"节点 {index} / {total} · {from} → {to}","viewer.guided.beat.reverse":"节点 {index} / {total} · {from} → {to} · 反向编写连接","viewer.guided.beat.multiple":"节点 {index} / {total} · {from} ⇄ {to} · {count} 条编写连接","viewer.guided.beat.group":"节点 {index} / {total} · {from} · {to} · 分组 · 无直接连接","viewer.guided.beat.aria.prefix":"故事节点 {index}/{total}：{label}。","viewer.guided.beat.aria.start":"起点。","viewer.guided.beat.aria.forward":"从{from}经一条正向编写关系到达。","viewer.guided.beat.aria.reverse":"从{from}出发；编写关系实际由{to}指向{from}。","viewer.guided.beat.aria.multiple":"从{from}经 {count} 条编写关系到达；不使用任意动效。","viewer.guided.beat.aria.group":"与{from}分组展示，没有直接编写关系。","viewer.guided.caption.start":"起点","viewer.guided.caption.grouped":"分组过渡 · 无直接编写连接","viewer.guided.caption.more":" +另外 {count} 条","viewer.guided.caption.reverse":"反向编写关系","viewer.guided.caption.relationships":"{count} 条编写关系","viewer.guided.caption.relationship":"编写关系","viewer.guided.caption.direction":"编写方向：{from} → {to}","viewer.guided.caption.starting":"编写起点","viewer.guided.beatLink":"复制当前故事时刻链接：第 {index}/{total} 个节点：{label}","viewer.guided.noStory":"此图表没有编写引导故事。","viewer.guide.eyebrow":"图表指南","viewer.guide.close":"关闭图表指南","viewer.guide.inspecting":"正在检查已编译语义","viewer.guide.actions":"图表探索操作","viewer.guide.find":"查找任意节点","viewer.guide.find.hint":"搜索标签、职责、类型和稳定 ID。","viewer.guide.route":"追踪路径","viewer.guide.route.aria":"追踪有向路径","viewer.guide.route.hint":"查看两个语义节点如何按编写方向连接。","viewer.guide.map":"查看完整系统","viewer.guide.map.hint":"打开带实时视口和稳定节点的语义雷达。","viewer.guide.lens":"比较语义类型","viewer.guide.lens.hint":"统计角色、显示流量并比较直接编写的连接。","viewer.guide.story":"播放引导故事","viewer.guide.story.hint":"浏览已编写的章节和真实关系。","viewer.guide.present":"进入演示模式","viewer.guide.present.hint":"让实时图表占满视口，同时不改变导出。","viewer.guide.shortcuts":"其他键盘快捷键","viewer.guide.shortcut.export":"导出","viewer.guide.shortcut.theme":"主题","viewer.guide.shortcut.style":"风格","viewer.guide.shortcut.reset":"重置","viewer.guide.shortcut.zoomIn":"放大","viewer.guide.shortcut.zoomOut":"缩小","viewer.guide.shortcut.close":"关闭","viewer.guide.facts":"{nodes} · {relationships} · {views}","viewer.guide.fact.node.one":"{count} 个语义节点","viewer.guide.fact.node.other":"{count} 个语义节点","viewer.guide.fact.relationship.one":"{count} 条关系","viewer.guide.fact.relationship.other":"{count} 条关系","viewer.guide.fact.view.one":"{count} 个引导视图","viewer.guide.fact.view.other":"{count} 个引导视图","viewer.guide.story.available.one":"浏览 {count} 个已编写章节及其真实关系。","viewer.guide.story.available.other":"浏览 {count} 个已编写章节及其真实关系。","viewer.guide.story.unavailable":"此图表没有编写引导故事。","viewer.guide.open":"打开图表指南","viewer.guide.noStory":"此图表没有编写引导故事。","viewer.finder.title":"查找节点","viewer.finder.close":"关闭节点查找器","viewer.finder.placeholder":"搜索标签或 ID","viewer.finder.search":"搜索图表节点","viewer.finder.results":"图表节点","viewer.finder.empty":"没有匹配的节点","viewer.finder.result.focus":"聚焦{label}","viewer.finder.result.routeStart":"选择{label}作为路径起点","viewer.finder.result.routeTarget":"选择{label}作为路径终点，{links}","viewer.finder.status.empty":"没有匹配的节点","viewer.finder.status.count.one":"{count} 个匹配节点","viewer.finder.status.count.other":"{count} 个匹配节点","viewer.finder.noun.nodes":"个节点","viewer.finder.link.one":"{count} 条连接","viewer.finder.link.other":"{count} 条连接","viewer.finder.result.focus.one":"聚焦{label}，{count} 条相关连接","viewer.finder.result.focus.other":"聚焦{label}，{count} 条相关连接","viewer.finder.status.filtered":"{visible}/{available} {noun}","viewer.finder.status.all":"{available} {noun}","viewer.passport.eyebrow":"语义护照","viewer.passport.metadata":"节点元数据","viewer.passport.evidence":"已验证的源代码证据","viewer.passport.verified":"已验证来源","viewer.passport.reach":"编写可达范围","viewer.passport.reach.trace":"追踪编写的可达性","viewer.passport.upstream":"上游","viewer.passport.downstream":"下游","viewer.passport.upstream.trace":"追踪上游编写可达性","viewer.passport.downstream.trace":"追踪下游编写可达性","viewer.passport.close":"关闭语义护照","viewer.passport.copy":"复制链接","viewer.passport.copy.focus":"复制聚焦节点的链接","viewer.passport.relations":"关系","viewer.passport.relations.show":"显示关联关系","viewer.passport.relations.hide":"隐藏关联关系","viewer.passport.relations.list":"关联关系","viewer.passport.copyRelation":"复制关系","viewer.passport.copyNode":"复制节点","viewer.passport.copyPinned":"复制固定关系的链接","viewer.passport.copySource":"复制来源节点的链接","viewer.passport.copy.focused.success":"已复制聚焦节点链接","viewer.passport.copy.pinned.success":"已复制固定关系链接","viewer.passport.copy.focused.failed":"无法复制聚焦节点链接","viewer.passport.copy.pinned.failed":"无法复制固定关系链接","viewer.passport.relationship.none":"没有关联关系","viewer.passport.relationship.count.one":"{count} 条关系","viewer.passport.relationship.count.other":"{count} 条关系","viewer.passport.relationship.show.one":"显示 {count} 条关联关系","viewer.passport.relationship.show.other":"显示 {count} 条关联关系","viewer.passport.relationship.summary":"{out} 条出向 · {in} 条入向{loops}","viewer.passport.relationship.loops":" · {count} 条自环","viewer.passport.relationship.explorer":"直接关系浏览器","viewer.passport.relationship.help":"使用方向键浏览关系。按 Enter 或空格键固定详情；按 Escape 清除。","viewer.passport.relationship.loopsBack":"回环","viewer.passport.relationship.connectsTo":"连接到","viewer.passport.relationship.connectsFrom":"连接自","viewer.passport.relationship.pinned":"已固定关系 · {from} → {to} · {label}","viewer.passport.relationship.inspect":"检查第 {index}/{total} 条关系：{from} 到 {to}，{label}。按 Enter 查看详情。","viewer.passport.relationship.group.out":"出向","viewer.passport.relationship.group.in":"入向","viewer.passport.relationship.group.loop":"自环","viewer.passport.relationship.row":"{group}：{relationship}，{neighbor}","viewer.passport.relationship.direction.out":"出 →","viewer.passport.relationship.direction.in":"← 入","viewer.passport.relationship.direction.loop":"自环","viewer.passport.sourceCount.one":"{count} 个已验证来源引用","viewer.passport.sourceCount.other":"{count} 个已验证来源引用","viewer.passport.sourceMarker":"来源","viewer.passport.beacon.one":"{count} 个已验证来源；聚焦此节点以检查","viewer.passport.beacon.other":"{count} 个已验证来源；聚焦此节点以检查","viewer.passport.repository.open":"打开已验证的仓库修订版本 {revision}","viewer.passport.source.open":"打开修订版本 {revision} 中已验证的来源 {path}","viewer.passport.source.openLink":"打开 ↗","viewer.passport.reach.upstream.one":"追踪 {count} 个上游编写节点","viewer.passport.reach.upstream.other":"追踪 {count} 个上游编写节点","viewer.passport.reach.downstream.one":"追踪 {count} 个下游编写节点","viewer.passport.reach.downstream.other":"追踪 {count} 个下游编写节点","viewer.passport.reach.noUpstream":"没有上游编写节点","viewer.passport.reach.noDownstream":"没有下游编写节点","viewer.passport.reach.status":"{direction} · {nodes} 个节点 · {links} 条连接 · 最深 {hops} 跳","viewer.route.eyebrow":"路径探测","viewer.route.start":"选择起点节点","viewer.route.start.find":"查找起点","viewer.route.start.find.aria":"查找路径起点","viewer.route.copy":"复制链接","viewer.route.copy.aria":"复制已追踪路径的链接","viewer.route.clear":"清除","viewer.route.clear.aria":"清除路径探测","viewer.route.traced":"已追踪路径","viewer.route.pickTwo":"在图表中选择两个语义节点","viewer.route.pickOne":"在图表中选择一个语义节点","viewer.route.controls":"路径旅程控制","viewer.route.previous":"上一个路径位置","viewer.route.play":"播放路径旅程","viewer.route.pause":"暂停路径旅程","viewer.route.replay":"重播路径旅程","viewer.route.next":"下一个路径位置","viewer.route.journey":"旅程","viewer.route.pause.label":"暂停","viewer.route.replay.label":"重播","viewer.route.overview":"总览","viewer.route.overview.aria":"显示完整路径总览","viewer.route.instructions":"先选择来源，再选择目标；方向很重要。","viewer.route.destination":"选择从{label}出发的目标","viewer.route.destination.find":"查找目标","viewer.route.destination.find.aria":"查找可达的路径目标","viewer.route.differentDestination":"选择其他目标","viewer.route.distinct":"一条路径需要两个不同的语义节点。","viewer.route.unreachable":"没有通往{label}的有向路径","viewer.route.unreachable.detail":"从{source}无法到达{target}。请选择高亮的目标。","viewer.route.start.instructions":"选择来源。下一步只会显示有向可达的目标。","viewer.route.copy.success":"已复制路径链接","viewer.route.copy.failed":"无法复制路径链接","viewer.route.position":"路径位置 {index}/{total}：{label}","viewer.route.step":"第 {index}/{total} 步 · {phase} · {label}","viewer.route.motionRequired":"自动旅程需要动态模式","viewer.route.trigger.clear":"清除已追踪路径","viewer.route.overview.status":"{nodes} · {hops} · 最短编写路径","viewer.route.overview.node.one":"{count} 个节点","viewer.route.overview.node.other":"{count} 个节点","viewer.route.overview.hop.one":"{count} 个有向跳转","viewer.route.overview.hop.other":"{count} 个有向跳转","viewer.route.phase.playing":"播放中","viewer.route.phase.complete":"已完成","viewer.route.phase.inspecting":"检查中","viewer.route.destination.count.one":"有 {count} 个有向目标可用。请选择高亮节点。","viewer.route.destination.count.other":"有 {count} 个有向目标可用。请选择高亮节点。","viewer.route.noOutgoing":"此处没有可用的出向路径。请清除后选择其他来源。","viewer.route.result.title":"{source} 到 {target}","viewer.route.finder.source.title":"选择路径起点","viewer.route.finder.source.placeholder":"搜索路径来源","viewer.route.finder.source.empty":"没有匹配的路径来源","viewer.route.finder.source.results":"可作为路径起点的节点","viewer.route.finder.source.noun":"个路径来源","viewer.route.finder.source.badge":"起点","viewer.route.finder.target.title":"从{label}出发的目标","viewer.route.finder.target.placeholder":"搜索可达目标","viewer.route.finder.target.empty":"没有匹配的可达目标","viewer.route.finder.target.results":"可达路径目标","viewer.route.finder.target.noun":"个可达目标","viewer.route.hop.one":"{count} 跳","viewer.route.hop.other":"{count} 跳","viewer.lens.eyebrow":"语义透镜","viewer.lens.title":"比较系统角色","viewer.lens.close":"关闭语义透镜","viewer.lens.instruction":"最多选择两种语义类型。选择一种可显示其真实流量；选择两种只比较直接编写的关系。","viewer.lens.kinds":"语义类型","viewer.lens.choose":"选择一种类型以检查其节点和相连关系。","viewer.lens.copy":"复制语义透镜链接","viewer.lens.clear":"清除语义透镜","viewer.lens.open":"打开语义透镜","viewer.lens.openActive":"打开当前语义透镜","viewer.lens.legend":"语义图例","viewer.lens.legend.inspect.one":"检查{label}，{count} 个节点","viewer.lens.legend.inspect.other":"检查{label}，{count} 个节点","viewer.lens.kind.count.one":"{label}，{count} 个节点","viewer.lens.kind.count.other":"{label}，{count} 个节点","viewer.lens.compare.one":"{first} → {second}：{forward} · {second} → {first}：{reverse} · 共 {count} 条直接关系","viewer.lens.compare.other":"{first} → {second}：{forward} · {second} → {first}：{reverse} · 共 {count} 条直接关系","viewer.lens.single":"{nodes} · {relationships} · 已连接节点保持可见","viewer.lens.node.one":"{count} 个{label}节点","viewer.lens.node.other":"{count} 个{label}节点","viewer.lens.relationship.one":"{count} 条相连关系","viewer.lens.relationship.other":"{count} 条相连关系","viewer.radar.title":"语义雷达","viewer.radar.building":"正在构建总览","viewer.radar.openFull":"打开完整语义雷达","viewer.radar.open":"打开雷达","viewer.radar.close":"关闭语义雷达","viewer.radar.surface":"图表总览。点击节点进行聚焦，或使用方向键平移。","viewer.radar.click":"点击节点","viewer.radar.drag":"拖动平移","viewer.radar.space":"语义雷达需要更多地图可见空间。","viewer.radar.nodes":"语义图表雷达节点","viewer.radar.focus":"从语义雷达聚焦{label}","viewer.radar.status":"{count} 个节点 · {viewport}","viewer.radar.fullMap":"{count} 个节点 · 完整地图","viewer.radar.compacted":"已收紧雷达，避免遮挡语义护照或地图控件。","viewer.radar.cancelWaiting":"取消等待更多地图空间的语义雷达","viewer.radar.needsSpace":"语义雷达需要更多可见地图空间","viewer.radar.viewport.full":"完整地图","viewer.radar.viewport.width":"宽度 {percent}%","viewer.radar.viewport.scale":"视口 {percent}%","viewer.nav.controls":"图表视图控制","viewer.nav.route":"追踪有向路径","viewer.nav.route.title":"追踪路径（R）","viewer.nav.route.short":"路径","viewer.nav.radar":"打开语义雷达","viewer.nav.radar.title":"语义雷达（M）","viewer.nav.radar.short":"地图","viewer.nav.lens":"打开语义透镜","viewer.nav.lens.title":"语义透镜（L）","viewer.nav.lens.short":"透镜","viewer.nav.find":"查找节点","viewer.nav.find.title":"查找节点（/）","viewer.nav.guide":"打开图表指南","viewer.nav.guide.title":"图表指南（?）","viewer.nav.zoomOut":"缩小","viewer.nav.zoomOut.title":"缩小（-）","viewer.nav.reset":"重置图表视图","viewer.nav.reset.title":"重置视图（0）","viewer.nav.read":"阅读","viewer.nav.zoomIn":"放大","viewer.nav.zoomIn.title":"放大（+）","viewer.nav.camera":"{hint}。重置图表视图","viewer.nav.camera.title":"{semantic}{hint} · 重置视图（0）","viewer.nav.camera.semantic":"语义相机已启用 · ","viewer.nav.level.map":"概览","viewer.nav.level.read":"阅读","viewer.nav.level.full":"完整","viewer.nav.level.auto":"自动","viewer.nav.detail.map":"放大以显示关系标签和节点上下文","viewer.nav.detail.read":"再次放大以显示标签和注释","viewer.nav.detail.full":"完整图表详情","viewer.intent.summary":"{label}。{out} 条出向，{in} 条入向{loops}。共 {total} 条连接。按 Enter 查看详情。","viewer.intent.loops":"，{count} 条自环","viewer.common.copied":"已复制","viewer.common.copyFailed":"复制失败","viewer.common.copyLink":"复制链接","viewer.common.clear":"清除","viewer.common.close":"关闭"}}</script>
     <div class="guided-views no-print" id="guided-views" hidden aria-label="图表引导视图">
@@ -5004,7 +5004,7 @@
     <!-- Main Diagram -->
     <div class="diagram-container" data-detail-level="read"
          data-preset-badge-editorial-plate="ARCHIFY / 图版 04">
-      <svg viewBox="0 0 1350 460" role="img" lang="zh-CN" aria-labelledby="archify-diagram-title archify-diagram-description" data-preset="classic" data-quality-profile="showcase">
+      <svg viewBox="0 0 1350 480" role="img" lang="zh-CN" aria-labelledby="archify-diagram-title archify-diagram-description" data-preset="classic" data-quality-profile="showcase">
         <title id="archify-diagram-title">Android 虚拟显示智能体技术架构</title>
         <desc id="archify-diagram-description">由 Archify 生成的架构图。</desc>
         <!-- Definitions -->
@@ -5030,241 +5030,258 @@
         <rect width="100%" height="100%" fill="url(#grid)" />
 
         <!-- Boundaries (behind everything) -->
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="0" data-composition-frame-label="Windows / Node.js 控制平面" x="13" y="1" width="1089" height="419" rx="12" class="c-region" stroke-width="1"/>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="0" data-composition-frame-label="Windows / Node.js 控制平面" x="13" y="31" width="1089" height="399" rx="12" class="c-region" stroke-width="1"/>
 
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="security-group" data-composition-frame-id="1" data-composition-frame-label="Android 真机：物理主屏与虚拟显示隔离" x="880" y="144" width="440" height="124" rx="8" class="c-security-group" stroke-width="1"/>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="security-group" data-composition-frame-id="1" data-composition-frame-label="Android 真机：物理主屏与虚拟显示隔离" x="880" y="161" width="440" height="124" rx="8" class="c-security-group" stroke-width="1"/>
 
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="2" data-composition-frame-label="独立业务真实数据边界" x="1102" y="296" width="216" height="124" rx="12" class="c-region" stroke-width="1"/>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="2" data-composition-frame-label="独立业务真实数据边界" x="1102" y="306" width="216" height="124" rx="12" class="c-region" stroke-width="1"/>
 
         <!-- Connection paths (before components for correct z-order) -->
-        <path data-edge-from="task_input" data-edge-to="agent_runner" data-edge-label="instruction + 验证条件" data-edge-key="0" data-edge-id="task_to_runner" data-composition-points="195,208;240,208" d="M 195 208 L 240 208" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="context_observer" data-edge-to="model_client" data-edge-label="只读上下文摘要" data-edge-key="1" data-edge-id="observer_to_model" data-composition-points="420,63;460,63" d="M 420 63 L 460 63" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
-        <path data-edge-from="agent_runner" data-edge-to="model_client" data-edge-label="任务、截图与历史" data-edge-key="2" data-edge-id="runner_to_model" data-composition-points="330,168;330,134.5;545,134.5;545,101" d="M 330 168 L 330 142.5 Q 330 134.5 338 134.5 L 537 134.5 Q 545 134.5 545 126.5 L 545 101" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="model_client" data-edge-to="model_service" data-edge-label="请求 / 单步动作响应" data-edge-key="3" data-edge-id="model_roundtrip" data-composition-points="630,63;680,63" d="M 630 63 L 680 63" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
-        <path data-edge-from="agent_runner" data-edge-to="safety_policy" data-edge-label="解析后的动作" data-edge-key="4" data-edge-id="runner_to_policy" data-composition-points="420,208;460,208" d="M 420 208 L 460 208" class="a-security" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
-        <path data-edge-from="safety_policy" data-edge-to="adb_executor" data-edge-label="授权的非零显示操作" data-edge-key="5" data-edge-id="policy_to_adb" data-composition-points="640,208;680,208" d="M 640 208 L 680 208" class="a-security" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
-        <path data-edge-from="adb_executor" data-edge-to="virtual_display" data-edge-label="ADB -d DISPLAY_ID" data-edge-key="6" data-edge-id="adb_to_display" data-composition-points="860,208;900,208" d="M 860 208 L 900 208" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="virtual_display" data-edge-to="agent_app" data-edge-label="画面渲染与定向输入" data-edge-key="7" data-edge-id="display_to_app" data-composition-points="1080,208;1120,208" d="M 1080 208 L 1120 208" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="agent_app" data-edge-to="demo_backend" data-edge-label="POST /api/tasks" data-edge-key="8" data-edge-id="app_to_backend" data-composition-points="1210,248;1210,320" d="M 1210 248 L 1210 320" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="verifier" data-edge-to="demo_backend" data-edge-label="GET /api/tasks / 真实记录" data-edge-key="9" data-edge-id="verifier_to_backend" data-composition-points="1080,360;1120,360" d="M 1080 360 L 1120 360" class="a-security" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
-        <path data-edge-from="verifier" data-edge-to="verified_result" data-edge-label="verified + evidence" data-edge-key="10" data-edge-id="verifier_to_result" data-composition-points="880,360;845,360" d="M 880 360 L 845 360" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path data-edge-from="task_input" data-edge-to="task_preprocessor" data-edge-label="任务文件 / --title 参数" data-edge-key="0" data-edge-id="task_to_preprocessor" data-composition-points="125,146;125,190" d="M 125 146 L 125 190" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path data-edge-from="task_preprocessor" data-edge-to="agent_runner" data-edge-label="结构化任务与验证条件" data-edge-key="1" data-edge-id="preprocessor_to_runner" data-composition-points="215,230;239,230;239,246;216,246;216,225;240,225" d="M 215 230 L 231 230 Q 239 230 239 238 L 239 238 Q 239 246 231 246 L 224 246 Q 216 246 216 238 L 216 233 Q 216 225 224 225 L 240 225" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path data-edge-from="context_observer" data-edge-to="model_client" data-edge-label="只读上下文摘要" data-edge-key="2" data-edge-id="observer_to_model" data-composition-points="420,93;460,93" d="M 420 93 L 460 93" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
+        <path data-edge-from="agent_runner" data-edge-to="model_client" data-edge-label="任务、截图与历史" data-edge-key="3" data-edge-id="runner_to_model" data-composition-points="330,185;330,158;545,158;545,131" d="M 330 185 L 330 166 Q 330 158 338 158 L 537 158 Q 545 158 545 150 L 545 131" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path data-edge-from="model_client" data-edge-to="model_service" data-edge-label="请求 / 单步动作响应" data-edge-key="4" data-edge-id="model_roundtrip" data-composition-points="630,93;680,93" d="M 630 93 L 680 93" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
+        <path data-edge-from="agent_runner" data-edge-to="safety_policy" data-edge-label="解析后的动作" data-edge-key="5" data-edge-id="runner_to_policy" data-composition-points="420,225;460,225" d="M 420 225 L 460 225" class="a-security" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
+        <path data-edge-from="safety_policy" data-edge-to="adb_executor" data-edge-label="授权的非零显示操作" data-edge-key="6" data-edge-id="policy_to_adb" data-composition-points="640,225;680,225" d="M 640 225 L 680 225" class="a-security" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
+        <path data-edge-from="adb_executor" data-edge-to="virtual_display" data-edge-label="ADB -d DISPLAY_ID" data-edge-key="7" data-edge-id="adb_to_display" data-composition-points="860,225;900,225" d="M 860 225 L 900 225" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path data-edge-from="virtual_display" data-edge-to="agent_app" data-edge-label="画面渲染与定向输入" data-edge-key="8" data-edge-id="display_to_app" data-composition-points="1080,225;1120,225" d="M 1080 225 L 1120 225" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path data-edge-from="agent_app" data-edge-to="demo_backend" data-edge-label="POST /api/tasks" data-edge-key="9" data-edge-id="app_to_backend" data-composition-points="1210,265;1210,330" d="M 1210 265 L 1210 330" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path data-edge-from="verifier" data-edge-to="demo_backend" data-edge-label="GET /api/tasks / 真实记录" data-edge-key="10" data-edge-id="verifier_to_backend" data-composition-points="1080,370;1120,370" d="M 1080 370 L 1120 370" class="a-security" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
+        <path data-edge-from="verifier" data-edge-to="verified_result" data-edge-label="verified + evidence" data-edge-key="11" data-edge-id="verifier_to_result" data-composition-points="880,370;845,370" d="M 880 370 L 845 370" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
 
         <!-- Components -->
         <g id="node-task_input" data-node-id="task_input" data-node-label="用户任务输入" tabindex="0" role="button" aria-label="聚焦用户任务输入，任务文件或 --title 参数, Windows / Node.js 控制平面" aria-pressed="false" data-node-kind="frontend" data-node-sublabel="任务文件或 --title 参数" data-node-tag="显式意图" data-node-context="Windows / Node.js 控制平面">
           <title>用户任务输入 · 任务文件或 --title 参数 · Windows / Node.js 控制平面 · 显式意图</title>
-          <rect x="35" y="170" width="160" height="76" rx="6" class="c-mask"/>
-          <rect x="35" y="170" width="160" height="76" rx="6" class="c-frontend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(41 176) scale(0.6875)">
+          <rect x="45" y="70" width="160" height="76" rx="6" class="c-mask"/>
+          <rect x="45" y="70" width="160" height="76" rx="6" class="c-frontend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(51 76) scale(0.6875)">
             <rect x="2" y="3" width="12" height="10" rx="2"/>
             <path d="M2 6.5h12"/>
             <circle cx="4.1" cy="4.8" r=".7" class="sigil-fill"/>
             <circle cx="6.3" cy="4.8" r=".7" class="sigil-fill"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="115" y="206" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">用户任务输入</text>
-        <text data-detail="context" x="115" y="222" class="t-muted" font-size="9" text-anchor="middle">任务文件或 --title 参数</text>
-        <text data-detail="fine" x="115" y="238" class="t-frontend" font-size="7" text-anchor="middle">显式意图</text>
+          <text data-node-label="" data-detail-anchor="" x="125" y="106" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">用户任务输入</text>
+        <text data-detail="context" x="125" y="122" class="t-muted" font-size="9" text-anchor="middle">任务文件或 --title 参数</text>
+        <text data-detail="fine" x="125" y="138" class="t-frontend" font-size="7" text-anchor="middle">显式意图</text>
+        </g>
+
+        <g id="node-task_preprocessor" data-node-id="task_preprocessor" data-node-label="任务加载与预处理" tabindex="0" role="button" aria-label="聚焦任务加载与预处理，参数校验、默认值与应用映射, Windows / Node.js 控制平面" aria-pressed="false" data-node-kind="backend" data-node-sublabel="参数校验、默认值与应用映射" data-node-tag="结构化任务" data-node-context="Windows / Node.js 控制平面">
+          <title>任务加载与预处理 · 参数校验、默认值与应用映射 · Windows / Node.js 控制平面 · 结构化任务</title>
+          <rect x="35" y="190" width="180" height="80" rx="6" class="c-mask"/>
+          <rect x="35" y="190" width="180" height="80" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(41 196) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="125" y="228" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">任务加载与预处理</text>
+        <text data-detail="context" x="125" y="244" class="t-muted" font-size="9" text-anchor="middle">参数校验、默认值与应用映射</text>
+        <text data-detail="fine" x="125" y="262" class="t-backend" font-size="7" text-anchor="middle">结构化任务</text>
         </g>
 
         <g id="node-context_observer" data-node-id="context_observer" data-node-label="主屏上下文观察" tabindex="0" role="button" aria-label="聚焦主屏上下文观察，Display 0 只读焦点 / 可选截图, Windows / Node.js 控制平面" aria-pressed="false" data-node-kind="security" data-node-sublabel="Display 0 只读焦点 / 可选截图" data-node-tag="默认不截屏" data-node-context="Windows / Node.js 控制平面">
           <title>主屏上下文观察 · Display 0 只读焦点 / 可选截图 · Windows / Node.js 控制平面 · 默认不截屏</title>
-          <rect x="240" y="25" width="180" height="76" rx="6" class="c-mask"/>
-          <rect x="240" y="25" width="180" height="76" rx="6" class="c-security" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(246 31) scale(0.6875)">
+          <rect x="240" y="55" width="180" height="76" rx="6" class="c-mask"/>
+          <rect x="240" y="55" width="180" height="76" rx="6" class="c-security" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(246 61) scale(0.6875)">
             <path d="M8 2.2 13 4v3.5c0 3.1-1.8 5.4-5 6.5-3.2-1.1-5-3.4-5-6.5V4Z"/>
             <path d="m5.8 8 1.5 1.5 3-3"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="330" y="61" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">主屏上下文观察</text>
-        <text data-detail="context" x="330" y="77" class="t-muted" font-size="9" text-anchor="middle">Display 0 只读焦点 / 可选截图</text>
-        <text data-detail="fine" x="330" y="93" class="t-security" font-size="7" text-anchor="middle">默认不截屏</text>
+          <text data-node-label="" data-detail-anchor="" x="330" y="91" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">主屏上下文观察</text>
+        <text data-detail="context" x="330" y="107" class="t-muted" font-size="9" text-anchor="middle">Display 0 只读焦点 / 可选截图</text>
+        <text data-detail="fine" x="330" y="123" class="t-security" font-size="7" text-anchor="middle">默认不截屏</text>
         </g>
 
         <g id="node-agent_runner" data-node-id="agent_runner" data-node-label="Agent Runner" tabindex="0" role="button" aria-label="聚焦Agent Runner，步骤、历史、停止条件与反馈循环, Windows / Node.js 控制平面" aria-pressed="false" data-node-kind="backend" data-node-sublabel="步骤、历史、停止条件与反馈循环" data-node-tag="最多 40 步" data-node-context="Windows / Node.js 控制平面">
           <title>Agent Runner · 步骤、历史、停止条件与反馈循环 · Windows / Node.js 控制平面 · 最多 40 步</title>
-          <rect x="240" y="168" width="180" height="80" rx="6" class="c-mask"/>
-          <rect x="240" y="168" width="180" height="80" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(246 174) scale(0.6875)">
+          <rect x="240" y="185" width="180" height="80" rx="6" class="c-mask"/>
+          <rect x="240" y="185" width="180" height="80" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(246 191) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="330" y="206" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Agent Runner</text>
-        <text data-detail="context" x="330" y="222" class="t-muted" font-size="9" text-anchor="middle">步骤、历史、停止条件与反馈循环</text>
-        <text data-detail="fine" x="330" y="240" class="t-backend" font-size="7" text-anchor="middle">最多 40 步</text>
+          <text data-node-label="" data-detail-anchor="" x="330" y="223" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Agent Runner</text>
+        <text data-detail="context" x="330" y="239" class="t-muted" font-size="9" text-anchor="middle">步骤、历史、停止条件与反馈循环</text>
+        <text data-detail="fine" x="330" y="257" class="t-backend" font-size="7" text-anchor="middle">最多 40 步</text>
         </g>
 
         <g id="node-model_client" data-node-id="model_client" data-node-label="模型适配器" tabindex="0" role="button" aria-label="聚焦模型适配器，截图、上下文与动作协议, Windows / Node.js 控制平面" aria-pressed="false" data-node-kind="backend" data-node-sublabel="截图、上下文与动作协议" data-node-tag="ModelClient" data-node-context="Windows / Node.js 控制平面">
           <title>模型适配器 · 截图、上下文与动作协议 · Windows / Node.js 控制平面 · ModelClient</title>
-          <rect x="460" y="25" width="170" height="76" rx="6" class="c-mask"/>
-          <rect x="460" y="25" width="170" height="76" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(466 31) scale(0.6875)">
+          <rect x="460" y="55" width="170" height="76" rx="6" class="c-mask"/>
+          <rect x="460" y="55" width="170" height="76" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(466 61) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="545" y="61" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">模型适配器</text>
-        <text data-detail="context" x="545" y="77" class="t-muted" font-size="9" text-anchor="middle">截图、上下文与动作协议</text>
-        <text data-detail="fine" x="545" y="93" class="t-backend" font-size="7" text-anchor="middle">ModelClient</text>
+          <text data-node-label="" data-detail-anchor="" x="545" y="91" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">模型适配器</text>
+        <text data-detail="context" x="545" y="107" class="t-muted" font-size="9" text-anchor="middle">截图、上下文与动作协议</text>
+        <text data-detail="fine" x="545" y="123" class="t-backend" font-size="7" text-anchor="middle">ModelClient</text>
         </g>
 
         <g id="node-model_service" data-node-id="model_service" data-node-label="视觉语言模型服务" tabindex="0" role="button" aria-label="聚焦视觉语言模型服务，OpenAI-compatible API, 架构组件" aria-pressed="false" data-node-kind="external" data-node-sublabel="OpenAI-compatible API" data-node-tag="AutoGLM 可配置" data-node-context="架构组件">
           <title>视觉语言模型服务 · OpenAI-compatible API · 架构组件 · AutoGLM 可配置</title>
-          <rect x="680" y="25" width="180" height="76" rx="6" class="c-mask"/>
-          <rect x="680" y="25" width="180" height="76" rx="6" class="c-external" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(686 31) scale(0.6875)">
+          <rect x="680" y="55" width="180" height="76" rx="6" class="c-mask"/>
+          <rect x="680" y="55" width="180" height="76" rx="6" class="c-external" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(686 61) scale(0.6875)">
             <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
             <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="770" y="61" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">视觉语言模型服务</text>
-        <text data-detail="context" x="770" y="77" class="t-muted" font-size="9" text-anchor="middle">OpenAI-compatible API</text>
-        <text data-detail="fine" x="770" y="93" class="t-external" font-size="7" text-anchor="middle">AutoGLM 可配置</text>
+          <text data-node-label="" data-detail-anchor="" x="770" y="91" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">视觉语言模型服务</text>
+        <text data-detail="context" x="770" y="107" class="t-muted" font-size="9" text-anchor="middle">OpenAI-compatible API</text>
+        <text data-detail="fine" x="770" y="123" class="t-external" font-size="7" text-anchor="middle">AutoGLM 可配置</text>
         </g>
 
         <g id="node-safety_policy" data-node-id="safety_policy" data-node-label="显示安全策略" tabindex="0" role="button" aria-label="聚焦显示安全策略，仅允许 displayId &gt; 0, Windows / Node.js 控制平面" aria-pressed="false" data-node-kind="security" data-node-sublabel="仅允许 displayId &gt; 0" data-node-tag="禁止写入 Display 0" data-node-context="Windows / Node.js 控制平面">
           <title>显示安全策略 · 仅允许 displayId &gt; 0 · Windows / Node.js 控制平面 · 禁止写入 Display 0</title>
-          <rect x="460" y="168" width="180" height="80" rx="6" class="c-mask"/>
-          <rect x="460" y="168" width="180" height="80" rx="6" class="c-security" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(466 174) scale(0.6875)">
+          <rect x="460" y="185" width="180" height="80" rx="6" class="c-mask"/>
+          <rect x="460" y="185" width="180" height="80" rx="6" class="c-security" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(466 191) scale(0.6875)">
             <path d="M8 2.2 13 4v3.5c0 3.1-1.8 5.4-5 6.5-3.2-1.1-5-3.4-5-6.5V4Z"/>
             <path d="m5.8 8 1.5 1.5 3-3"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="550" y="206" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">显示安全策略</text>
-        <text data-detail="context" x="550" y="222" class="t-muted" font-size="9" text-anchor="middle">仅允许 displayId &gt; 0</text>
-        <text data-detail="fine" x="550" y="240" class="t-security" font-size="7" text-anchor="middle">禁止写入 Display 0</text>
+          <text data-node-label="" data-detail-anchor="" x="550" y="223" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">显示安全策略</text>
+        <text data-detail="context" x="550" y="239" class="t-muted" font-size="9" text-anchor="middle">仅允许 displayId &gt; 0</text>
+        <text data-detail="fine" x="550" y="257" class="t-security" font-size="7" text-anchor="middle">禁止写入 Display 0</text>
         </g>
 
         <g id="node-adb_executor" data-node-id="adb_executor" data-node-label="ADB 定向执行器" tabindex="0" role="button" aria-label="聚焦ADB 定向执行器，点击、滑动、按键与输入, Windows / Node.js 控制平面" aria-pressed="false" data-node-kind="backend" data-node-sublabel="点击、滑动、按键与输入" data-node-tag="携带显示编号" data-node-context="Windows / Node.js 控制平面">
           <title>ADB 定向执行器 · 点击、滑动、按键与输入 · Windows / Node.js 控制平面 · 携带显示编号</title>
-          <rect x="680" y="168" width="180" height="80" rx="6" class="c-mask"/>
-          <rect x="680" y="168" width="180" height="80" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(686 174) scale(0.6875)">
+          <rect x="680" y="185" width="180" height="80" rx="6" class="c-mask"/>
+          <rect x="680" y="185" width="180" height="80" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(686 191) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="770" y="206" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">ADB 定向执行器</text>
-        <text data-detail="context" x="770" y="222" class="t-muted" font-size="9" text-anchor="middle">点击、滑动、按键与输入</text>
-        <text data-detail="fine" x="770" y="240" class="t-backend" font-size="7" text-anchor="middle">携带显示编号</text>
+          <text data-node-label="" data-detail-anchor="" x="770" y="223" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">ADB 定向执行器</text>
+        <text data-detail="context" x="770" y="239" class="t-muted" font-size="9" text-anchor="middle">点击、滑动、按键与输入</text>
+        <text data-detail="fine" x="770" y="257" class="t-backend" font-size="7" text-anchor="middle">携带显示编号</text>
         </g>
 
         <g id="node-virtual_display" data-node-id="virtual_display" data-node-label="Agent 虚拟显示" tabindex="0" role="button" aria-label="聚焦Agent 虚拟显示，scrcpy --new-display, Android 真机：物理主屏与虚拟显示隔离" aria-pressed="false" data-node-kind="cloud" data-node-sublabel="scrcpy --new-display" data-node-tag="Display ID &gt; 0" data-node-context="Android 真机：物理主屏与虚拟显示隔离">
           <title>Agent 虚拟显示 · scrcpy --new-display · Android 真机：物理主屏与虚拟显示隔离 · Display ID &gt; 0</title>
-          <rect x="900" y="168" width="180" height="80" rx="6" class="c-mask"/>
-          <rect x="900" y="168" width="180" height="80" rx="6" class="c-cloud" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="cloud" class="semantic-sigil s-cloud" transform="translate(906 174) scale(0.6875)">
+          <rect x="900" y="185" width="180" height="80" rx="6" class="c-mask"/>
+          <rect x="900" y="185" width="180" height="80" rx="6" class="c-cloud" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="cloud" class="semantic-sigil s-cloud" transform="translate(906 191) scale(0.6875)">
             <path d="M4.3 12.5h7.3a2.4 2.4 0 0 0 .2-4.8 4 4 0 0 0-7.5-1.3A3.1 3.1 0 0 0 4.3 12.5Z"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="990" y="206" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Agent 虚拟显示</text>
-        <text data-detail="context" x="990" y="222" class="t-muted" font-size="9" text-anchor="middle">scrcpy --new-display</text>
-        <text data-detail="fine" x="990" y="240" class="t-cloud" font-size="7" text-anchor="middle">Display ID &gt; 0</text>
+          <text data-node-label="" data-detail-anchor="" x="990" y="223" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Agent 虚拟显示</text>
+        <text data-detail="context" x="990" y="239" class="t-muted" font-size="9" text-anchor="middle">scrcpy --new-display</text>
+        <text data-detail="fine" x="990" y="257" class="t-cloud" font-size="7" text-anchor="middle">Display ID &gt; 0</text>
         </g>
 
         <g id="node-agent_app" data-node-id="agent_app" data-node-label="Shadow Tasks Agent" tabindex="0" role="button" aria-label="聚焦Shadow Tasks Agent，独立包名的 Agent 应用, Android 真机：物理主屏与虚拟显示隔离" aria-pressed="false" data-node-kind="frontend" data-node-sublabel="独立包名的 Agent 应用" data-node-tag="虚拟显示实例" data-node-context="Android 真机：物理主屏与虚拟显示隔离">
           <title>Shadow Tasks Agent · 独立包名的 Agent 应用 · Android 真机：物理主屏与虚拟显示隔离 · 虚拟显示实例</title>
-          <rect x="1120" y="168" width="180" height="80" rx="6" class="c-mask"/>
-          <rect x="1120" y="168" width="180" height="80" rx="6" class="c-frontend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(1126 174) scale(0.6875)">
+          <rect x="1120" y="185" width="180" height="80" rx="6" class="c-mask"/>
+          <rect x="1120" y="185" width="180" height="80" rx="6" class="c-frontend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(1126 191) scale(0.6875)">
             <rect x="2" y="3" width="12" height="10" rx="2"/>
             <path d="M2 6.5h12"/>
             <circle cx="4.1" cy="4.8" r=".7" class="sigil-fill"/>
             <circle cx="6.3" cy="4.8" r=".7" class="sigil-fill"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="1210" y="206" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Shadow Tasks Agent</text>
-        <text data-detail="context" x="1210" y="222" class="t-muted" font-size="9" text-anchor="middle">独立包名的 Agent 应用</text>
-        <text data-detail="fine" x="1210" y="240" class="t-frontend" font-size="7" text-anchor="middle">虚拟显示实例</text>
+          <text data-node-label="" data-detail-anchor="" x="1210" y="223" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Shadow Tasks Agent</text>
+        <text data-detail="context" x="1210" y="239" class="t-muted" font-size="9" text-anchor="middle">独立包名的 Agent 应用</text>
+        <text data-detail="fine" x="1210" y="257" class="t-frontend" font-size="7" text-anchor="middle">虚拟显示实例</text>
         </g>
 
         <g id="node-demo_backend" data-node-id="demo_backend" data-node-label="共享业务后端" tabindex="0" role="button" aria-label="聚焦共享业务后端，任务创建、查询与持久化, 独立业务真实数据边界" aria-pressed="false" data-node-kind="database" data-node-sublabel="任务创建、查询与持久化" data-node-tag="HTTP :8787" data-node-context="独立业务真实数据边界">
           <title>共享业务后端 · 任务创建、查询与持久化 · 独立业务真实数据边界 · HTTP :8787</title>
-          <rect x="1120" y="320" width="180" height="80" rx="6" class="c-mask"/>
-          <rect x="1120" y="320" width="180" height="80" rx="6" class="c-database" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(1126 326) scale(0.6875)">
+          <rect x="1120" y="330" width="180" height="80" rx="6" class="c-mask"/>
+          <rect x="1120" y="330" width="180" height="80" rx="6" class="c-database" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(1126 336) scale(0.6875)">
             <ellipse cx="8" cy="4" rx="5" ry="2"/>
             <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="1210" y="358" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">共享业务后端</text>
-        <text data-detail="context" x="1210" y="374" class="t-muted" font-size="9" text-anchor="middle">任务创建、查询与持久化</text>
-        <text data-detail="fine" x="1210" y="392" class="t-database" font-size="7" text-anchor="middle">HTTP :8787</text>
+          <text data-node-label="" data-detail-anchor="" x="1210" y="368" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">共享业务后端</text>
+        <text data-detail="context" x="1210" y="384" class="t-muted" font-size="9" text-anchor="middle">任务创建、查询与持久化</text>
+        <text data-detail="fine" x="1210" y="402" class="t-database" font-size="7" text-anchor="middle">HTTP :8787</text>
         </g>
 
         <g id="node-verifier" data-node-id="verifier" data-node-label="独立结果验证器" tabindex="0" role="button" aria-label="聚焦独立结果验证器，由 Runner 每步调用并查询真实记录, Windows / Node.js 控制平面" aria-pressed="false" data-node-kind="security" data-node-sublabel="由 Runner 每步调用并查询真实记录" data-node-tag="不采信模型自报完成" data-node-context="Windows / Node.js 控制平面">
           <title>独立结果验证器 · 由 Runner 每步调用并查询真实记录 · Windows / Node.js 控制平面 · 不采信模型自报完成</title>
-          <rect x="880" y="320" width="200" height="80" rx="6" class="c-mask"/>
-          <rect x="880" y="320" width="200" height="80" rx="6" class="c-security" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(886 326) scale(0.6875)">
+          <rect x="880" y="330" width="200" height="80" rx="6" class="c-mask"/>
+          <rect x="880" y="330" width="200" height="80" rx="6" class="c-security" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(886 336) scale(0.6875)">
             <path d="M8 2.2 13 4v3.5c0 3.1-1.8 5.4-5 6.5-3.2-1.1-5-3.4-5-6.5V4Z"/>
             <path d="m5.8 8 1.5 1.5 3-3"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="980" y="358" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">独立结果验证器</text>
-        <text data-detail="context" x="980" y="374" class="t-muted" font-size="9" text-anchor="middle">由 Runner 每步调用并查询真实记录</text>
-        <text data-detail="fine" x="980" y="392" class="t-security" font-size="7" text-anchor="middle">不采信模型自报完成</text>
+          <text data-node-label="" data-detail-anchor="" x="980" y="368" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">独立结果验证器</text>
+        <text data-detail="context" x="980" y="384" class="t-muted" font-size="9" text-anchor="middle">由 Runner 每步调用并查询真实记录</text>
+        <text data-detail="fine" x="980" y="402" class="t-security" font-size="7" text-anchor="middle">不采信模型自报完成</text>
         </g>
 
         <g id="node-verified_result" data-node-id="verified_result" data-node-label="已验证结果与证据" tabindex="0" role="button" aria-label="聚焦已验证结果与证据，状态、任务记录、截图与 events.jsonl, Windows / Node.js 控制平面" aria-pressed="false" data-node-kind="cloud" data-node-sublabel="状态、任务记录、截图与 events.jsonl" data-node-tag="completed / failed" data-node-context="Windows / Node.js 控制平面">
           <title>已验证结果与证据 · 状态、任务记录、截图与 events.jsonl · Windows / Node.js 控制平面 · completed / failed</title>
-          <rect x="640" y="320" width="205" height="80" rx="6" class="c-mask"/>
-          <rect x="640" y="320" width="205" height="80" rx="6" class="c-cloud" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="cloud" class="semantic-sigil s-cloud" transform="translate(646 326) scale(0.6875)">
+          <rect x="640" y="330" width="205" height="80" rx="6" class="c-mask"/>
+          <rect x="640" y="330" width="205" height="80" rx="6" class="c-cloud" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="cloud" class="semantic-sigil s-cloud" transform="translate(646 336) scale(0.6875)">
             <path d="M4.3 12.5h7.3a2.4 2.4 0 0 0 .2-4.8 4 4 0 0 0-7.5-1.3A3.1 3.1 0 0 0 4.3 12.5Z"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="742.5" y="358" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">已验证结果与证据</text>
-        <text data-detail="context" x="742.5" y="374" class="t-muted" font-size="9" text-anchor="middle">状态、任务记录、截图与 events.jsonl</text>
-        <text data-detail="fine" x="742.5" y="392" class="t-cloud" font-size="7" text-anchor="middle">completed / failed</text>
+          <text data-node-label="" data-detail-anchor="" x="742.5" y="368" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">已验证结果与证据</text>
+        <text data-detail="context" x="742.5" y="384" class="t-muted" font-size="9" text-anchor="middle">状态、任务记录、截图与 events.jsonl</text>
+        <text data-detail="fine" x="742.5" y="402" class="t-cloud" font-size="7" text-anchor="middle">completed / failed</text>
         </g>
 
         <!-- Connection labels -->
-        <g data-detail="context" data-edge-from="task_input" data-edge-to="agent_runner" data-edge-label="instruction + 验证条件" data-edge-key="0" data-edge-id="task_to_runner">
-          <rect x="157.2" y="154" width="115.6" height="14" rx="3" class="c-mask"/>
-          <text x="215" y="164" class="t-backend" font-size="8" text-anchor="middle">instruction + 验证条件</text>
+        <g data-detail="context" data-edge-from="task_input" data-edge-to="task_preprocessor" data-edge-label="任务文件 / --title 参数" data-edge-key="0" data-edge-id="task_to_preprocessor">
+          <rect x="144.8" y="150" width="120.39999999999999" height="14" rx="3" class="c-mask"/>
+          <text x="205" y="160" class="t-backend" font-size="8" text-anchor="middle">任务文件 / --title 参数</text>
         </g>
-        <g data-detail="context" data-edge-from="context_observer" data-edge-to="model_client" data-edge-label="只读上下文摘要" data-edge-key="1" data-edge-id="observer_to_model">
-          <rect x="411.4" y="105" width="77.2" height="14" rx="3" class="c-mask"/>
-          <text x="450" y="115" class="t-messagebus" font-size="8" text-anchor="middle">只读上下文摘要</text>
+        <g data-detail="context" data-edge-from="task_preprocessor" data-edge-to="agent_runner" data-edge-label="结构化任务与验证条件" data-edge-key="1" data-edge-id="preprocessor_to_runner">
+          <rect x="164" y="165" width="106" height="14" rx="3" class="c-mask"/>
+          <text x="217" y="175" class="t-backend" font-size="8" text-anchor="middle">结构化任务与验证条件</text>
         </g>
-        <g data-detail="context" data-edge-from="agent_runner" data-edge-to="model_client" data-edge-label="任务、截图与历史" data-edge-key="2" data-edge-id="runner_to_model">
-          <rect x="306.6" y="130" width="86.8" height="14" rx="3" class="c-mask"/>
-          <text x="350" y="140" class="t-backend" font-size="8" text-anchor="middle">任务、截图与历史</text>
+        <g data-detail="context" data-edge-from="context_observer" data-edge-to="model_client" data-edge-label="只读上下文摘要" data-edge-key="2" data-edge-id="observer_to_model">
+          <rect x="411.4" y="140" width="77.2" height="14" rx="3" class="c-mask"/>
+          <text x="450" y="150" class="t-messagebus" font-size="8" text-anchor="middle">只读上下文摘要</text>
         </g>
-        <g data-detail="context" data-edge-from="model_client" data-edge-to="model_service" data-edge-label="请求 / 单步动作响应" data-edge-key="3" data-edge-id="model_roundtrip">
-          <rect x="619.4" y="105" width="101.2" height="14" rx="3" class="c-mask"/>
-          <text x="670" y="115" class="t-messagebus" font-size="8" text-anchor="middle">请求 / 单步动作响应</text>
+        <g data-detail="context" data-edge-from="agent_runner" data-edge-to="model_client" data-edge-label="任务、截图与历史" data-edge-key="3" data-edge-id="runner_to_model">
+          <rect x="306.6" y="145" width="86.8" height="14" rx="3" class="c-mask"/>
+          <text x="350" y="155" class="t-backend" font-size="8" text-anchor="middle">任务、截图与历史</text>
         </g>
-        <g data-detail="context" data-edge-from="agent_runner" data-edge-to="safety_policy" data-edge-label="解析后的动作" data-edge-key="4" data-edge-id="runner_to_policy">
-          <rect x="406.2" y="154" width="67.6" height="14" rx="3" class="c-mask"/>
-          <text x="440" y="164" class="t-security" font-size="8" text-anchor="middle">解析后的动作</text>
+        <g data-detail="context" data-edge-from="model_client" data-edge-to="model_service" data-edge-label="请求 / 单步动作响应" data-edge-key="4" data-edge-id="model_roundtrip">
+          <rect x="619.4" y="140" width="101.2" height="14" rx="3" class="c-mask"/>
+          <text x="670" y="150" class="t-messagebus" font-size="8" text-anchor="middle">请求 / 单步动作响应</text>
         </g>
-        <g data-detail="context" data-edge-from="safety_policy" data-edge-to="adb_executor" data-edge-label="授权的非零显示操作" data-edge-key="5" data-edge-id="policy_to_adb">
-          <rect x="611.8" y="254" width="96.39999999999999" height="14" rx="3" class="c-mask"/>
-          <text x="660" y="264" class="t-security" font-size="8" text-anchor="middle">授权的非零显示操作</text>
+        <g data-detail="context" data-edge-from="agent_runner" data-edge-to="safety_policy" data-edge-label="解析后的动作" data-edge-key="5" data-edge-id="runner_to_policy">
+          <rect x="406.2" y="165" width="67.6" height="14" rx="3" class="c-mask"/>
+          <text x="440" y="175" class="t-security" font-size="8" text-anchor="middle">解析后的动作</text>
         </g>
-        <g data-detail="context" data-edge-from="adb_executor" data-edge-to="virtual_display" data-edge-label="ADB -d DISPLAY_ID" data-edge-key="6" data-edge-id="adb_to_display">
-          <rect x="834.2" y="254" width="91.6" height="14" rx="3" class="c-mask"/>
-          <text x="880" y="264" class="t-backend" font-size="8" text-anchor="middle">ADB -d DISPLAY_ID</text>
+        <g data-detail="context" data-edge-from="safety_policy" data-edge-to="adb_executor" data-edge-label="授权的非零显示操作" data-edge-key="6" data-edge-id="policy_to_adb">
+          <rect x="611.8" y="270" width="96.39999999999999" height="14" rx="3" class="c-mask"/>
+          <text x="660" y="280" class="t-security" font-size="8" text-anchor="middle">授权的非零显示操作</text>
         </g>
-        <g data-detail="context" data-edge-from="virtual_display" data-edge-to="agent_app" data-edge-label="画面渲染与定向输入" data-edge-key="7" data-edge-id="display_to_app">
-          <rect x="1051.8" y="254" width="96.39999999999999" height="14" rx="3" class="c-mask"/>
-          <text x="1100" y="264" class="t-backend" font-size="8" text-anchor="middle">画面渲染与定向输入</text>
+        <g data-detail="context" data-edge-from="adb_executor" data-edge-to="virtual_display" data-edge-label="ADB -d DISPLAY_ID" data-edge-key="7" data-edge-id="adb_to_display">
+          <rect x="834.2" y="270" width="91.6" height="14" rx="3" class="c-mask"/>
+          <text x="880" y="280" class="t-backend" font-size="8" text-anchor="middle">ADB -d DISPLAY_ID</text>
         </g>
-        <g data-detail="context" data-edge-from="agent_app" data-edge-to="demo_backend" data-edge-label="POST /api/tasks" data-edge-key="8" data-edge-id="app_to_backend">
-          <rect x="1169" y="276" width="82" height="14" rx="3" class="c-mask"/>
-          <text x="1210" y="286" class="t-backend" font-size="8" text-anchor="middle">POST /api/tasks</text>
+        <g data-detail="context" data-edge-from="virtual_display" data-edge-to="agent_app" data-edge-label="画面渲染与定向输入" data-edge-key="8" data-edge-id="display_to_app">
+          <rect x="1051.8" y="270" width="96.39999999999999" height="14" rx="3" class="c-mask"/>
+          <text x="1100" y="280" class="t-backend" font-size="8" text-anchor="middle">画面渲染与定向输入</text>
         </g>
-        <g data-detail="context" data-edge-from="verifier" data-edge-to="demo_backend" data-edge-label="GET /api/tasks / 真实记录" data-edge-key="9" data-edge-id="verifier_to_backend">
-          <rect x="1035" y="404" width="130" height="14" rx="3" class="c-mask"/>
-          <text x="1100" y="414" class="t-security" font-size="8" text-anchor="middle">GET /api/tasks / 真实记录</text>
+        <g data-detail="context" data-edge-from="agent_app" data-edge-to="demo_backend" data-edge-label="POST /api/tasks" data-edge-key="9" data-edge-id="app_to_backend">
+          <rect x="1169" y="290" width="82" height="14" rx="3" class="c-mask"/>
+          <text x="1210" y="300" class="t-backend" font-size="8" text-anchor="middle">POST /api/tasks</text>
         </g>
-        <g data-detail="context" data-edge-from="verifier" data-edge-to="verified_result" data-edge-label="verified + evidence" data-edge-key="10" data-edge-id="verifier_to_result">
-          <rect x="804.4" y="404" width="101.2" height="14" rx="3" class="c-mask"/>
-          <text x="855" y="414" class="t-backend" font-size="8" text-anchor="middle">verified + evidence</text>
+        <g data-detail="context" data-edge-from="verifier" data-edge-to="demo_backend" data-edge-label="GET /api/tasks / 真实记录" data-edge-key="10" data-edge-id="verifier_to_backend">
+          <rect x="1035" y="415" width="130" height="14" rx="3" class="c-mask"/>
+          <text x="1100" y="425" class="t-security" font-size="8" text-anchor="middle">GET /api/tasks / 真实记录</text>
+        </g>
+        <g data-detail="context" data-edge-from="verifier" data-edge-to="verified_result" data-edge-label="verified + evidence" data-edge-key="11" data-edge-id="verifier_to_result">
+          <rect x="804.4" y="415" width="101.2" height="14" rx="3" class="c-mask"/>
+          <text x="855" y="425" class="t-backend" font-size="8" text-anchor="middle">verified + evidence</text>
         </g>
 
         <!-- Boundary labels (foreground masks keep routes out of titles) -->
         <g data-graph-role="structural-frame-label" data-composition-frame-id="0" data-composition-frame-kind="region" data-composition-frame-label="Windows / Node.js 控制平面">
-          <rect data-graph-role="structural-frame-label-mask" x="17" y="5" width="150.4" height="16" rx="3" class="c-mask"/>
-          <text data-boundary-label="" x="21" y="18" class="t-cloud" font-size="9" font-weight="600">Windows / Node.js 控制平面</text>
+          <rect data-graph-role="structural-frame-label-mask" x="17" y="35" width="150.4" height="16" rx="3" class="c-mask"/>
+          <text data-boundary-label="" x="21" y="48" class="t-cloud" font-size="9" font-weight="600">Windows / Node.js 控制平面</text>
         </g>
 
         <g data-graph-role="structural-frame-label" data-composition-frame-id="1" data-composition-frame-kind="security-group" data-composition-frame-label="Android 真机：物理主屏与虚拟显示隔离">
-          <rect data-graph-role="structural-frame-label-mask" x="884" y="148" width="204.4" height="16" rx="3" class="c-mask"/>
-          <text data-boundary-label="" x="888" y="161" class="t-security" font-size="9" font-weight="600">Android 真机：物理主屏与虚拟显示隔离</text>
+          <rect data-graph-role="structural-frame-label-mask" x="884" y="165" width="204.4" height="16" rx="3" class="c-mask"/>
+          <text data-boundary-label="" x="888" y="178" class="t-security" font-size="9" font-weight="600">Android 真机：物理主屏与虚拟显示隔离</text>
         </g>
 
         <g data-graph-role="structural-frame-label" data-composition-frame-id="2" data-composition-frame-kind="region" data-composition-frame-label="独立业务真实数据边界">
-          <rect data-graph-role="structural-frame-label-mask" x="1106" y="300" width="118" height="16" rx="3" class="c-mask"/>
-          <text data-boundary-label="" x="1110" y="313" class="t-cloud" font-size="9" font-weight="600">独立业务真实数据边界</text>
+          <rect data-graph-role="structural-frame-label-mask" x="1106" y="310" width="118" height="16" rx="3" class="c-mask"/>
+          <text data-boundary-label="" x="1110" y="323" class="t-cloud" font-size="9" font-weight="600">独立业务真实数据边界</text>
         </g>
 
         <!-- Legend -->

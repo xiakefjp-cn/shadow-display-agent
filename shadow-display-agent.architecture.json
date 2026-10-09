@@ -5,13 +5,13 @@
     "title": "Android 虚拟显示智能体技术架构",
     "locale": "zh-CN",
     "quality_profile": "showcase",
-    "viewBox": [1350, 460],
+    "viewBox": [1350, 480],
     "views": [
       {
         "id": "main-path",
         "label": "任务执行主链路",
-        "focus": ["task_input", "agent_runner", "safety_policy", "adb_executor", "virtual_display", "agent_app", "demo_backend", "verifier", "verified_result"],
-        "note": "从显式任务输入开始，经过安全约束的虚拟显示操作，最终由独立后端验证。"
+        "focus": ["task_input", "task_preprocessor", "agent_runner", "safety_policy", "adb_executor", "virtual_display", "agent_app", "demo_backend", "verifier", "verified_result"],
+        "note": "从显式任务输入开始，经过加载与预处理、安全约束的虚拟显示操作，最终由独立后端验证。"
       },
       {
         "id": "decision-loop",
@@ -34,8 +34,17 @@
       "label": "用户任务输入",
       "sublabel": "任务文件或 --title 参数",
       "tag": "显式意图",
-      "pos": [35, 170],
+      "pos": [45, 70],
       "size": [160, 76]
+    },
+    {
+      "id": "task_preprocessor",
+      "type": "backend",
+      "label": "任务加载与预处理",
+      "sublabel": "参数校验、默认值与应用映射",
+      "tag": "结构化任务",
+      "pos": [35, 190],
+      "size": [180, 80]
     },
     {
       "id": "context_observer",
@@ -43,7 +52,7 @@
       "label": "主屏上下文观察",
       "sublabel": "Display 0 只读焦点 / 可选截图",
       "tag": "默认不截屏",
-      "pos": [240, 25],
+      "pos": [240, 55],
       "size": [180, 76]
     },
     {
@@ -52,7 +61,7 @@
       "label": "Agent Runner",
       "sublabel": "步骤、历史、停止条件与反馈循环",
       "tag": "最多 40 步",
-      "pos": [240, 168],
+      "pos": [240, 185],
       "size": [180, 80]
     },
     {
@@ -61,7 +70,7 @@
       "label": "模型适配器",
       "sublabel": "截图、上下文与动作协议",
       "tag": "ModelClient",
-      "pos": [460, 25],
+      "pos": [460, 55],
       "size": [170, 76]
     },
     {
@@ -70,7 +79,7 @@
       "label": "视觉语言模型服务",
       "sublabel": "OpenAI-compatible API",
       "tag": "AutoGLM 可配置",
-      "pos": [680, 25],
+      "pos": [680, 55],
       "size": [180, 76]
     },
     {
@@ -79,7 +88,7 @@
       "label": "显示安全策略",
       "sublabel": "仅允许 displayId > 0",
       "tag": "禁止写入 Display 0",
-      "pos": [460, 168],
+      "pos": [460, 185],
       "size": [180, 80]
     },
     {
@@ -88,7 +97,7 @@
       "label": "ADB 定向执行器",
       "sublabel": "点击、滑动、按键与输入",
       "tag": "携带显示编号",
-      "pos": [680, 168],
+      "pos": [680, 185],
       "size": [180, 80]
     },
     {
@@ -97,7 +106,7 @@
       "label": "Agent 虚拟显示",
       "sublabel": "scrcpy --new-display",
       "tag": "Display ID > 0",
-      "pos": [900, 168],
+      "pos": [900, 185],
       "size": [180, 80]
     },
     {
@@ -106,7 +115,7 @@
       "label": "Shadow Tasks Agent",
       "sublabel": "独立包名的 Agent 应用",
       "tag": "虚拟显示实例",
-      "pos": [1120, 168],
+      "pos": [1120, 185],
       "size": [180, 80]
     },
     {
@@ -115,7 +124,7 @@
       "label": "共享业务后端",
       "sublabel": "任务创建、查询与持久化",
       "tag": "HTTP :8787",
-      "pos": [1120, 320],
+      "pos": [1120, 330],
       "size": [180, 80]
     },
     {
@@ -124,7 +133,7 @@
       "label": "独立结果验证器",
       "sublabel": "由 Runner 每步调用并查询真实记录",
       "tag": "不采信模型自报完成",
-      "pos": [880, 320],
+      "pos": [880, 330],
       "size": [200, 80]
     },
     {
@@ -133,7 +142,7 @@
       "label": "已验证结果与证据",
       "sublabel": "状态、任务记录、截图与 events.jsonl",
       "tag": "completed / failed",
-      "pos": [640, 320],
+      "pos": [640, 330],
       "size": [205, 80]
     }
   ],
@@ -141,7 +150,7 @@
     {
       "kind": "region",
       "label": "Windows / Node.js 控制平面",
-      "wraps": ["task_input", "context_observer", "agent_runner", "model_client", "safety_policy", "adb_executor", "verifier", "verified_result"],
+      "wraps": ["task_input", "task_preprocessor", "context_observer", "agent_runner", "model_client", "safety_policy", "adb_executor", "verifier", "verified_result"],
       "pad": 22
     },
     {
@@ -159,12 +168,23 @@
   ],
   "connections": [
     {
-      "id": "task_to_runner",
+      "id": "task_to_preprocessor",
       "from": "task_input",
-      "to": "agent_runner",
-      "label": "instruction + 验证条件",
+      "to": "task_preprocessor",
+      "label": "任务文件 / --title 参数",
       "variant": "emphasis",
-      "labelAt": [215, 164]
+      "fromSide": "bottom",
+      "toSide": "top",
+      "route": "straight",
+      "labelAt": [205, 160]
+    },
+    {
+      "id": "preprocessor_to_runner",
+      "from": "task_preprocessor",
+      "to": "agent_runner",
+      "label": "结构化任务与验证条件",
+      "variant": "emphasis",
+      "labelAt": [217, 175]
     },
     {
       "id": "observer_to_model",
@@ -172,7 +192,7 @@
       "to": "model_client",
       "label": "只读上下文摘要",
       "variant": "dashed",
-      "labelAt": [450, 115]
+      "labelAt": [450, 150]
     },
     {
       "id": "runner_to_model",
@@ -182,7 +202,7 @@
       "variant": "emphasis",
       "fromSide": "top",
       "toSide": "bottom",
-      "labelAt": [350, 140]
+      "labelAt": [350, 155]
     },
     {
       "id": "model_roundtrip",
@@ -190,7 +210,7 @@
       "to": "model_service",
       "label": "请求 / 单步动作响应",
       "variant": "dashed",
-      "labelAt": [670, 115]
+      "labelAt": [670, 150]
     },
     {
       "id": "runner_to_policy",
@@ -198,7 +218,7 @@
       "to": "safety_policy",
       "label": "解析后的动作",
       "variant": "security",
-      "labelAt": [440, 164]
+      "labelAt": [440, 175]
     },
     {
       "id": "policy_to_adb",
@@ -206,7 +226,7 @@
       "to": "adb_executor",
       "label": "授权的非零显示操作",
       "variant": "security",
-      "labelAt": [660, 264]
+      "labelAt": [660, 280]
     },
     {
       "id": "adb_to_display",
@@ -214,7 +234,7 @@
       "to": "virtual_display",
       "label": "ADB -d DISPLAY_ID",
       "variant": "emphasis",
-      "labelAt": [880, 264]
+      "labelAt": [880, 280]
     },
     {
       "id": "display_to_app",
@@ -222,7 +242,7 @@
       "to": "agent_app",
       "label": "画面渲染与定向输入",
       "variant": "emphasis",
-      "labelAt": [1100, 264]
+      "labelAt": [1100, 280]
     },
     {
       "id": "app_to_backend",
@@ -230,7 +250,7 @@
       "to": "demo_backend",
       "label": "POST /api/tasks",
       "variant": "emphasis",
-      "labelAt": [1210, 286]
+      "labelAt": [1210, 300]
     },
     {
       "id": "verifier_to_backend",
@@ -238,7 +258,7 @@
       "to": "demo_backend",
       "label": "GET /api/tasks / 真实记录",
       "variant": "security",
-      "labelAt": [1100, 414]
+      "labelAt": [1100, 425]
     },
     {
       "id": "verifier_to_result",
@@ -246,7 +266,7 @@
       "to": "verified_result",
       "label": "verified + evidence",
       "variant": "emphasis",
-      "labelAt": [855, 414]
+      "labelAt": [855, 425]
     }
   ],
   "cards": [

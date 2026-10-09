@@ -1,0 +1,281 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Android 虚拟显示智能体技术架构",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "viewBox": [1350, 460],
+    "views": [
+      {
+        "id": "main-path",
+        "label": "任务执行主链路",
+        "focus": ["task_input", "agent_runner", "safety_policy", "adb_executor", "virtual_display", "agent_app", "demo_backend", "verifier", "verified_result"],
+        "note": "从显式任务输入开始，经过安全约束的虚拟显示操作，最终由独立后端验证。"
+      },
+      {
+        "id": "decision-loop",
+        "label": "模型决策与反馈",
+        "focus": ["context_observer", "agent_runner", "model_client", "model_service", "virtual_display"],
+        "note": "模型根据虚拟显示截图和最近操作历史逐步选择下一动作。"
+      },
+      {
+        "id": "truth-boundary",
+        "label": "安全与真实结果边界",
+        "focus": ["safety_policy", "adb_executor", "demo_backend", "verifier", "verified_result"],
+        "note": "Display 0 写入被禁止；模型声明完成后仍必须经过业务接口验证。"
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "task_input",
+      "type": "frontend",
+      "label": "用户任务输入",
+      "sublabel": "任务文件或 --title 参数",
+      "tag": "显式意图",
+      "pos": [35, 170],
+      "size": [160, 76]
+    },
+    {
+      "id": "context_observer",
+      "type": "security",
+      "label": "主屏上下文观察",
+      "sublabel": "Display 0 只读焦点 / 可选截图",
+      "tag": "默认不截屏",
+      "pos": [240, 25],
+      "size": [180, 76]
+    },
+    {
+      "id": "agent_runner",
+      "type": "backend",
+      "label": "Agent Runner",
+      "sublabel": "步骤、历史、停止条件与反馈循环",
+      "tag": "最多 40 步",
+      "pos": [240, 168],
+      "size": [180, 80]
+    },
+    {
+      "id": "model_client",
+      "type": "backend",
+      "label": "模型适配器",
+      "sublabel": "截图、上下文与动作协议",
+      "tag": "ModelClient",
+      "pos": [460, 25],
+      "size": [170, 76]
+    },
+    {
+      "id": "model_service",
+      "type": "external",
+      "label": "视觉语言模型服务",
+      "sublabel": "OpenAI-compatible API",
+      "tag": "AutoGLM 可配置",
+      "pos": [680, 25],
+      "size": [180, 76]
+    },
+    {
+      "id": "safety_policy",
+      "type": "security",
+      "label": "显示安全策略",
+      "sublabel": "仅允许 displayId > 0",
+      "tag": "禁止写入 Display 0",
+      "pos": [460, 168],
+      "size": [180, 80]
+    },
+    {
+      "id": "adb_executor",
+      "type": "backend",
+      "label": "ADB 定向执行器",
+      "sublabel": "点击、滑动、按键与输入",
+      "tag": "携带显示编号",
+      "pos": [680, 168],
+      "size": [180, 80]
+    },
+    {
+      "id": "virtual_display",
+      "type": "cloud",
+      "label": "Agent 虚拟显示",
+      "sublabel": "scrcpy --new-display",
+      "tag": "Display ID > 0",
+      "pos": [900, 168],
+      "size": [180, 80]
+    },
+    {
+      "id": "agent_app",
+      "type": "frontend",
+      "label": "Shadow Tasks Agent",
+      "sublabel": "独立包名的 Agent 应用",
+      "tag": "虚拟显示实例",
+      "pos": [1120, 168],
+      "size": [180, 80]
+    },
+    {
+      "id": "demo_backend",
+      "type": "database",
+      "label": "共享业务后端",
+      "sublabel": "任务创建、查询与持久化",
+      "tag": "HTTP :8787",
+      "pos": [1120, 320],
+      "size": [180, 80]
+    },
+    {
+      "id": "verifier",
+      "type": "security",
+      "label": "独立结果验证器",
+      "sublabel": "由 Runner 每步调用并查询真实记录",
+      "tag": "不采信模型自报完成",
+      "pos": [880, 320],
+      "size": [200, 80]
+    },
+    {
+      "id": "verified_result",
+      "type": "cloud",
+      "label": "已验证结果与证据",
+      "sublabel": "状态、任务记录、截图与 events.jsonl",
+      "tag": "completed / failed",
+      "pos": [640, 320],
+      "size": [205, 80]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Windows / Node.js 控制平面",
+      "wraps": ["task_input", "context_observer", "agent_runner", "model_client", "safety_policy", "adb_executor", "verifier", "verified_result"],
+      "pad": 22
+    },
+    {
+      "kind": "security-group",
+      "label": "Android 真机：物理主屏与虚拟显示隔离",
+      "wraps": ["virtual_display", "agent_app"],
+      "pad": 20
+    },
+    {
+      "kind": "region",
+      "label": "独立业务真实数据边界",
+      "wraps": ["demo_backend"],
+      "pad": 18
+    }
+  ],
+  "connections": [
+    {
+      "id": "task_to_runner",
+      "from": "task_input",
+      "to": "agent_runner",
+      "label": "instruction + 验证条件",
+      "variant": "emphasis",
+      "labelAt": [215, 164]
+    },
+    {
+      "id": "observer_to_model",
+      "from": "context_observer",
+      "to": "model_client",
+      "label": "只读上下文摘要",
+      "variant": "dashed",
+      "labelAt": [450, 115]
+    },
+    {
+      "id": "runner_to_model",
+      "from": "agent_runner",
+      "to": "model_client",
+      "label": "任务、截图与历史",
+      "variant": "emphasis",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "labelAt": [350, 140]
+    },
+    {
+      "id": "model_roundtrip",
+      "from": "model_client",
+      "to": "model_service",
+      "label": "请求 / 单步动作响应",
+      "variant": "dashed",
+      "labelAt": [670, 115]
+    },
+    {
+      "id": "runner_to_policy",
+      "from": "agent_runner",
+      "to": "safety_policy",
+      "label": "解析后的动作",
+      "variant": "security",
+      "labelAt": [440, 164]
+    },
+    {
+      "id": "policy_to_adb",
+      "from": "safety_policy",
+      "to": "adb_executor",
+      "label": "授权的非零显示操作",
+      "variant": "security",
+      "labelAt": [660, 264]
+    },
+    {
+      "id": "adb_to_display",
+      "from": "adb_executor",
+      "to": "virtual_display",
+      "label": "ADB -d DISPLAY_ID",
+      "variant": "emphasis",
+      "labelAt": [880, 264]
+    },
+    {
+      "id": "display_to_app",
+      "from": "virtual_display",
+      "to": "agent_app",
+      "label": "画面渲染与定向输入",
+      "variant": "emphasis",
+      "labelAt": [1100, 264]
+    },
+    {
+      "id": "app_to_backend",
+      "from": "agent_app",
+      "to": "demo_backend",
+      "label": "POST /api/tasks",
+      "variant": "emphasis",
+      "labelAt": [1210, 286]
+    },
+    {
+      "id": "verifier_to_backend",
+      "from": "verifier",
+      "to": "demo_backend",
+      "label": "GET /api/tasks / 真实记录",
+      "variant": "security",
+      "labelAt": [1100, 414]
+    },
+    {
+      "id": "verifier_to_result",
+      "from": "verifier",
+      "to": "verified_result",
+      "label": "verified + evidence",
+      "variant": "emphasis",
+      "labelAt": [855, 414]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "成功案例",
+      "items": [
+        "Prepare interview notes 已完成端到端验证",
+        "Display 12 中执行，后端返回完整匹配任务记录",
+        "业务接口证据决定完成状态，而非模型自报"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "强制安全边界",
+      "items": [
+        "Display 0 仅用于受控的只读上下文",
+        "所有写操作必须绑定本次 Agent 非零显示",
+        "支付、删除、发送和账号变更不自动执行"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Bad Case 沉淀",
+      "items": [
+        "Prepare111 出现字符顺序异常，未作为成功案例",
+        "中文输入法组合状态可能导致乱码或字符替换",
+        "后续采用专用 IME、无障碍输入或应用内结构化传值"
+      ]
+    }
+  ]
+}

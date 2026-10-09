@@ -23,6 +23,11 @@ function shellText(text) {
   return text.replace(/%/g, '%25').replace(/ /g, '%s');
 }
 
+function parseSurfaceFlingerVirtualDisplayIds(text) {
+  return [...text.matchAll(/\bDisplay\s+(\d+)\s+\(Virtual display\)/gi)]
+    .map(match => match[1]);
+}
+
 export class AdbDevice {
   constructor({ adbPath = 'adb', serial = '' } = {}) {
     this.adbPath = adbPath;
@@ -47,6 +52,15 @@ export class AdbDevice {
   }
 
   getDisplayIds() {
+    const direct = this.shell(['cmd', 'display', 'get-displays', '-i'], { allowFailure: true });
+    if (direct.status === 0) {
+      const ids = direct.stdout
+        .split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(line => /^\d+$/.test(line))
+        .map(Number);
+      if (ids.length) return [...new Set(ids)].sort((a, b) => a - b);
+    }
     const output = this.shell(['dumpsys', 'display']).stdout;
     return parseDisplayIds(output);
   }
@@ -60,8 +74,18 @@ export class AdbDevice {
   screenshot(displayId, targetPath) {
     const id = Number(displayId);
     if (!Number.isInteger(id) || id < 0) throw new Error(`Invalid display id: ${displayId}`);
+    const captureIds = [String(id)];
+    if (id > 0) {
+      const surfaceFlinger = this.shell(
+        ['dumpsys', 'SurfaceFlinger', '--display-id'],
+        { allowFailure: true }
+      );
+      const virtualIds = parseSurfaceFlingerVirtualDisplayIds(surfaceFlinger.stdout || '');
+      // scrcpy owns the newest virtual display during an agent run.
+      if (virtualIds.length) captureIds.unshift(virtualIds.at(-1));
+    }
     const attempts = [
-      ['exec-out', 'screencap', '-p', '-d', String(id)],
+      ...captureIds.map(captureId => ['exec-out', 'screencap', '-p', '-d', captureId]),
       ['exec-out', 'screencap', '-p', '--display-id', String(id)]
     ];
     let last;
@@ -93,6 +117,13 @@ export class AdbDevice {
     return this.shell(['input', '-d', displayId, 'text', shellText(text)]);
   }
 
+  startActivityWithText(displayId, component, extraName, text) {
+    return this.shell([
+      'am', 'start', '--display', displayId, '--activity-single-top',
+      '-n', component, '--es', extraName, text
+    ]);
+  }
+
   resolveActivity(packageName) {
     const result = this.shell(['cmd', 'package', 'resolve-activity', '--brief', packageName], { allowFailure: true });
     return result.status === 0 ? result.stdout.trim().split(/\r?\n/).at(-1) : '';
@@ -109,4 +140,4 @@ export class AdbDevice {
   }
 }
 
-export { parseDisplayIds };
+export { parseDisplayIds, parseSurfaceFlingerVirtualDisplayIds };

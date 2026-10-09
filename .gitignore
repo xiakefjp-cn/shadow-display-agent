@@ -3,7 +3,15 @@
 artifacts/
 tools/
 *.log
+config/apps.json
+demo-app/.idea/
+demo-app/local.properties
 demo-app/.gradle/
 demo-app/build/
 demo-app/app/build/
+shadow-display-agent-architecture.visual-check.html
+shadow-display-agent-architecture.visual-check.json
+shadow-display-agent-architecture.visual-check.1440x900.dark.png
+shadow-display-agent-architecture.visual-check.2048x1320.dark.png
+shadow-display-agent-architecture.visual-check.2048x1320.light.png
 

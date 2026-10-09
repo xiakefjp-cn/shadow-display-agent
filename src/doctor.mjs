@@ -17,8 +17,14 @@ export function runDoctor(config, adb) {
     const devices = adb.listDevices();
     results.push(check('authorized Android device', devices.length > 0, devices.join('; ') || 'none'));
     if (devices.length) {
-      const inputHelp = adb.shell(['input', '--help'], { allowFailure: true });
-      const inputText = `${inputHelp.stdout}\n${inputHelp.stderr}`;
+      let inputHelp = adb.shell(['input', '--help'], { allowFailure: true });
+      let inputText = `${inputHelp.stdout}\n${inputHelp.stderr}`;
+      // AOSP accepts `-h`; some builds accept `--help`, while HyperOS 3
+      // reports it as an unknown command without printing the usage text.
+      if (!/-d\s+DISPLAY_ID|--display/i.test(inputText)) {
+        inputHelp = adb.shell(['input', '-h'], { allowFailure: true });
+        inputText = `${inputHelp.stdout}\n${inputHelp.stderr}`;
+      }
       results.push(check('display-targeted input', /-d\s+DISPLAY_ID|--display/i.test(inputText), 'Android shell input must support -d DISPLAY_ID'));
       const displays = adb.getDisplayIds();
       results.push(check('display discovery', displays.includes(0), `found: ${displays.join(', ')}`));

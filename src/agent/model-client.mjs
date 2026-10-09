@@ -20,8 +20,11 @@ do(action="Wait")
 finish(message="verified visible outcome")
 
 Rules:
-- Coordinates are pixels in the provided screenshot.
+- Coordinates are relative to the ENTIRE screenshot and use a normalized 0-1000 range: [0,0] is the screenshot's top-left and [1000,1000] is its bottom-right. Visually locate the target, then use the normalized coordinates of its center.
 - One action per response.
+- If Shadow Tasks is visible and the task asks you to create a titled task, the task-title input is the empty field directly BELOW the server URL field. Tap the center of that title input before typing. Do not tap the server URL field or the area below the buttons.
+- Before using Type, inspect the visible keyboard. If a Chinese IME is active and its language key shows 中/英, first Tap that 中/英 key once to switch to direct English input; only use Type on the following step. This is required even when the requested text is ASCII, because Chinese composition corrupts ADB text injection.
+- If told that the previous action did not advance the UI, reassess the current screenshot and choose a DIFFERENT action. Never repeat the same ineffective action.
 - Do not perform payment, purchase, deletion, publication, message sending, or account/security changes.
 - Do not claim completion until the result is visibly present; an independent verifier will check it.
 - If the UI is loading, use Wait.`;

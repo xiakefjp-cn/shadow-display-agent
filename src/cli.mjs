@@ -56,8 +56,15 @@ async function main() {
   }
 
   if (command === 'run') {
-    const taskFile = path.resolve(option('--task', 'config/task.example.json'));
-    const task = readTask(taskFile);
+    const requestedTitle = option('--title');
+    const task = requestedTitle
+      ? {
+          instruction: `在 Shadow Tasks 中创建任务，标题为 ${requestedTitle}。看到任务出现在列表后结束。`,
+          startApp: 'Shadow Tasks',
+          risk: 'low',
+          verification: { type: 'demo-task', titleContains: requestedTitle }
+        }
+      : readTask(path.resolve(option('--task', 'config/task.example.json')));
     const apps = loadApps();
     const logger = new RunLogger(config.artifactDir);
     const session = new ScrcpyVirtualDisplay({
@@ -97,7 +104,7 @@ async function main() {
     return;
   }
 
-  console.log(`Shadow Display Agent\n\nCommands:\n  npm run doctor\n  node src/cli.mjs observe\n  node src/cli.mjs run --task config/task.example.json [--apps config/apps.json]`);
+  console.log(`Shadow Display Agent\n\nCommands:\n  npm run doctor\n  node src/cli.mjs observe\n  node src/cli.mjs run --title "Prepare111"\n  node src/cli.mjs run --task config/task.example.json [--apps config/apps.json]`);
 }
 
 main().catch(error => {

@@ -2,16 +2,10 @@
 
 Android 原型：用户持续使用物理主屏（Display 0），Agent 在同一台手机的虚拟显示中完成真实任务。主屏只读，任何点击、滑动和输入都在代码层强制绑定非零 `displayId`。
 
-```mermaid
-flowchart LR
-  H[用户 · 物理主屏 Display 0] -->|只读前台上下文| O[Context Observer]
-  O --> M[AutoGLM / OpenAI-compatible VLM]
-  M --> P[Display Safety Policy]
-  P -->|仅 displayId > 0| V[Agent 虚拟显示]
-  V --> A[目标 App / Agent 双实例]
-  A --> R[独立 API 验证]
-  R --> M
-```
+![Android 虚拟显示智能体技术架构](./shadow-display-agent-architecture.visual-check.1440x900.light.png)
+
+- [完整项目报告](./Android虚拟显示智能体系统设计与实现报告.md)
+- [交互式技术架构图](./shadow-display-agent-architecture.html)
 
 ## 能力与安全边界
 
@@ -42,11 +36,13 @@ powershell -ExecutionPolicy Bypass -File .\scripts\install-demo-apps.ps1
 Copy-Item .\config\apps.example.json .\config\apps.json
 Start-Process node -ArgumentList 'demo-server/server.mjs' -WindowStyle Hidden
 
-# 5. 启动 AutoGLM OpenAI-compatible 服务后执行任务
-node .\src\cli.mjs run --task .\config\task.example.json
+# 5. 启动 AutoGLM OpenAI-compatible 服务后执行成功案例
+node .\src\cli.mjs run --title "Prepare interview notes"
 ```
 
-演示：在物理屏打开 `Shadow Tasks`（或任意其他 App）并持续滑动/打字；Agent 在不可见的虚拟显示打开 `Shadow Tasks Agent` 创建任务。Agent 返回完成后，物理屏刷新列表即可看到同一后端的真实记录。
+演示：在物理屏打开 `Shadow Tasks`（或任意其他 App）并持续滑动/打字；Agent 在不可见的虚拟显示打开 `Shadow Tasks Agent` 创建标题为 `Prepare interview notes` 的任务。Agent 返回完成后，物理屏刷新列表即可看到同一后端的真实记录。
+
+`Prepare111` 字符顺序异常和中文输入乱码作为 Bad Case 保留在项目报告中，不作为成功案例。
 
 ## 环境变量
 

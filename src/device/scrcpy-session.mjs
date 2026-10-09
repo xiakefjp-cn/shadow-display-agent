@@ -6,6 +6,12 @@ function appendAndParse(state, chunk) {
   if (matches.length) state.displayId = Number(matches.at(-1)[1]);
 }
 
+function scrcpyEnvironment(serial, source = process.env) {
+  const env = { ...source };
+  if (!serial) delete env.ANDROID_SERIAL;
+  return env;
+}
+
 export class ScrcpyVirtualDisplay {
   constructor({ scrcpyPath, serial, size, dpi, startComponent, adb }) {
     this.scrcpyPath = scrcpyPath;
@@ -26,14 +32,15 @@ export class ScrcpyVirtualDisplay {
       '--display-ime-policy=local',
       '--no-clipboard-autosync',
       '--no-audio',
-      '--no-playback',
       '--window-title=Shadow Agent Display'
     ];
     if (this.serial) args.unshift('--serial', this.serial);
     if (this.startComponent) args.push('--start-app', this.startComponent);
 
     const state = { output: '', displayId: null };
-    this.child = start(this.scrcpyPath, args);
+    this.child = start(this.scrcpyPath, args, {
+      env: scrcpyEnvironment(this.serial)
+    });
     this.child.stdout.on('data', chunk => appendAndParse(state, chunk));
     this.child.stderr.on('data', chunk => appendAndParse(state, chunk));
 
@@ -68,4 +75,4 @@ export class ScrcpyVirtualDisplay {
   }
 }
 
-export { appendAndParse };
+export { appendAndParse, scrcpyEnvironment };

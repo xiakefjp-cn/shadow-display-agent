@@ -45,6 +45,8 @@ export function getConfig() {
     model: process.env.PHONE_AGENT_MODEL || 'autoglm-phone-9b',
     maxSteps: integer('PHONE_AGENT_MAX_STEPS', 40),
     actionDelayMs: integer('AGENT_ACTION_DELAY_MS', 1200),
+    switchImeToEnglishBeforeType: bool('AGENT_SWITCH_IME_TO_ENGLISH_BEFORE_TYPE', false),
+    agentTextInputExtra: process.env.AGENT_TEXT_INPUT_EXTRA || '',
     allowMainDisplayCapture: bool('ALLOW_MAIN_DISPLAY_CAPTURE', false),
     observerAllowPackages: (process.env.HUMAN_OBSERVER_ALLOW_PACKAGES || '').split(',').map(item => item.trim()).filter(Boolean),
     artifactDir,

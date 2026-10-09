@@ -2,6 +2,7 @@ package com.shadowtasks;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -39,7 +40,24 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(buildUi());
+        applyAgentText(getIntent());
         refreshTasks();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        applyAgentText(intent);
+    }
+
+    private void applyAgentText(Intent intent) {
+        if (!BuildConfig.APPLICATION_ID.endsWith(".agent") || intent == null) return;
+        String value = intent.getStringExtra("shadow_text");
+        if (value != null) {
+            title.setText(value);
+            title.setSelection(value.length());
+        }
     }
 
     private View buildUi() {
